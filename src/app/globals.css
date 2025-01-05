@@ -4,18 +4,1378 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0f172a;
+  --gaming-gradient: linear-gradient(
+    135deg,
+    #4f46e5 0%,
+    #06b6d4 50%,
+    #4f46e5 100%
+  );
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0f172a;
+    --foreground: #ffffff;
   }
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer components {
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .btn-gaming {
+    @apply relative px-8 py-4 bg-primary rounded-lg font-medium text-white
+           overflow-hidden transition-all duration-300 hover:scale-105
+           active:scale-95 hover:shadow-glow-xl;
+  }
+
+  .btn-gaming-glow {
+    @apply absolute inset-0 bg-gradient-gaming opacity-0 
+           transition-opacity duration-300 group-hover:opacity-100;
+  }
+
+  .btn-secondary-gaming {
+    @apply px-8 py-4 rounded-lg font-medium border-2 border-current border-opacity-10
+           hover:border-accent transition-all duration-300
+           flex items-center backdrop-blur-sm hover:bg-accent/5;
+  }
+
+  .game-card {
+    @apply absolute inset-0 rounded-2xl overflow-hidden
+           border border-white/10 backdrop-blur-xl
+           transition-all duration-500 hover:scale-105;
+  }
+
+  .game-card-stack {
+    @apply relative w-full aspect-[4/3] transform-gpu;
+  }
+
+  .glitch-effect {
+    @apply relative inline-block text-transparent bg-clip-text bg-gradient-gaming
+           after:content-['Fennonauts'] after:absolute after:left-[2px] after:top-[2px]
+           after:text-primary/50 after:z-[-1]
+           before:content-['Fennonauts'] before:absolute before:left-[-2px] before:top-[-2px]
+           before:text-accent/50 before:z-[-1];
+  }
+
+  .bg-space {
+    @apply bg-space-darker;
+    background-image: radial-gradient(
+      circle at center,
+      rgba(110, 58, 255, 0.15) 0%,
+      rgba(0, 212, 255, 0.1) 35%,
+      rgba(10, 6, 23, 1) 100%
+    );
+  }
+
+  .nebula-effect {
+    @apply absolute inset-0 mix-blend-screen opacity-20;
+    background: radial-gradient(
+        1400px circle at 30% 30%,
+        theme(colors.primary.DEFAULT/15) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        1000px circle at 70% 70%,
+        theme(colors.accent.DEFAULT/10) 0%,
+        transparent 50%
+      );
+    filter: blur(100px);
+  }
+
+  .cosmic-badge {
+    @apply flex items-center px-6 py-3 bg-white/5 backdrop-blur-xl rounded-full
+           border border-white/10 text-white/90 font-mono text-sm
+           shadow-lg hover:shadow-primary/20 transition-all duration-500;
+  }
+
+  .cosmic-text {
+    @apply relative inline-block;
+    background: linear-gradient(180deg, #ffffff 0%, #f0f9ff 100%);
+    -webkit-background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.8),
+      0 0 60px rgba(56, 189, 248, 0.5);
+  }
+
+  .cosmic-button {
+    @apply relative px-8 py-4 rounded-xl font-medium text-white
+           overflow-hidden transition-all duration-300;
+    background: linear-gradient(
+      135deg,
+      rgba(56, 189, 248, 0.9) 0%,
+      rgba(37, 99, 235, 0.9) 100%
+    );
+    box-shadow: 0 0 20px -5px rgba(56, 189, 248, 0.5),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+  }
+
+  .cosmic-button:hover {
+    background: linear-gradient(
+      135deg,
+      rgba(56, 189, 248, 1) 0%,
+      rgba(37, 99, 235, 1) 100%
+    );
+    transform: translateY(-1px);
+    box-shadow: 0 0 30px -5px rgba(56, 189, 248, 0.6),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+
+  .cosmic-button:active {
+    transform: translateY(1px);
+    box-shadow: 0 0 20px -5px rgba(56, 189, 248, 0.4),
+      inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .cosmic-button-secondary {
+    @apply px-8 py-4 rounded-full font-medium border-2 border-white/10
+           hover:border-accent/50 transition-all duration-300 text-white/90
+           flex items-center backdrop-blur-xl hover:bg-white/5
+           shadow-lg hover:shadow-accent/30;
+  }
+
+  .cosmic-glow {
+    @apply absolute inset-0 opacity-0 transition-all duration-300 group-hover:opacity-100;
+    background: radial-gradient(
+      circle at center,
+      rgba(56, 189, 248, 0.4) 0%,
+      transparent 70%
+    );
+    filter: blur(10px);
+  }
+
+  .console-grid {
+    @apply grid grid-cols-2 gap-6 transform-gpu;
+  }
+
+  .console-panel {
+    @apply rounded-2xl overflow-hidden border border-white/10 backdrop-blur-xl
+           transition-all duration-500 hover:scale-105 hover:border-primary/30
+           bg-white/5 shadow-lg hover:shadow-primary/20;
+  }
+
+  .space-icon {
+    @apply w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-accent
+           opacity-80 shadow-lg;
+  }
+
+  .star-field {
+    @apply absolute inset-0 overflow-hidden;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+  }
+
+  .star {
+    @apply absolute rounded-full;
+    background: theme(colors.space.stars);
+    box-shadow: 0 0 2px theme(colors.space.stars),
+      0 0 4px theme(colors.primary.DEFAULT/40),
+      0 0 6px theme(colors.accent.DEFAULT/20);
+    animation: twinkle 3s infinite;
+  }
+
+  .star-particle {
+    @apply absolute w-[1px] h-[1px] bg-space-stars rounded-full;
+    box-shadow: 0 0 15px 1px theme(colors.space.stars);
+    animation: star-twinkle 3s infinite;
+  }
+
+  .stars-container {
+    @apply absolute inset-0;
+    perspective: 500px;
+    transform-style: preserve-3d;
+  }
+
+  .floating-console {
+    @apply relative;
+    filter: drop-shadow(0 0 20px theme(colors.primary.DEFAULT/20));
+  }
+
+  .aurora-beam {
+    @apply absolute top-0 w-[2px] h-[30vh] opacity-30;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      theme(colors.primary.DEFAULT) 20%,
+      theme(colors.accent.DEFAULT) 50%,
+      transparent
+    );
+    animation: aurora-flow 8s infinite;
+    filter: blur(3px);
+  }
+
+  .cosmic-gradient {
+    @apply relative font-bold;
+    background: linear-gradient(
+      90deg,
+      #ffffff 0%,
+      theme(colors.primary.light) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.6),
+      0 0 40px rgba(96, 165, 250, 0.4);
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
+
+  .game-video-card {
+    @apply relative overflow-hidden backdrop-blur-sm bg-space-dark/30
+           border border-white/10 rounded-2xl shadow-lg
+           transition-all duration-500;
+  }
+
+  .game-video-card:hover {
+    @apply border-primary/30 shadow-primary/20;
+    box-shadow: 0 0 30px -5px theme(colors.primary.DEFAULT/20),
+      inset 0 0 20px theme(colors.primary.DEFAULT/10);
+  }
+
+  .game-video-card::after {
+    content: "";
+    @apply absolute inset-0 rounded-2xl;
+    box-shadow: inset 0 0 20px theme(colors.space.darker/50);
+  }
+
+  .perspective-3d {
+    perspective: 2000px;
+    transform-style: preserve-3d;
+  }
+
+  .grid-container {
+    @apply grid gap-6 transform-gpu;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+  }
+
+  .featured-video-card {
+    @apply col-span-2 row-span-2 rounded-2xl overflow-hidden;
+    transform: translateZ(0);
+    box-shadow: 0 0 40px -10px theme(colors.primary.DEFAULT/30),
+      0 0 20px -5px theme(colors.accent.DEFAULT/20);
+  }
+
+  .video-wrapper {
+    @apply relative w-full h-full overflow-hidden rounded-2xl
+           border border-white/10 backdrop-blur-sm;
+    background: rgba(255, 255, 255, 0.03);
+    transform-style: preserve-3d;
+  }
+
+  .video-content {
+    @apply absolute bottom-0 left-0 right-0 p-6 z-10
+           transform transition-transform duration-500;
+  }
+
+  .video-overlay {
+    @apply absolute inset-0 opacity-0 transition-opacity duration-500;
+    background: linear-gradient(
+      to top,
+      theme(colors.primary.DEFAULT/20),
+      theme(colors.accent.DEFAULT/10)
+    );
+  }
+
+  .video-wrapper:hover .video-overlay {
+    @apply opacity-100;
+  }
+
+  .game-tag {
+    @apply inline-block px-3 py-1 rounded-full text-xs font-medium
+           bg-gradient-to-r from-primary/20 to-accent/20
+           border border-white/10 backdrop-blur-sm;
+    box-shadow: 0 0 20px theme(colors.primary.DEFAULT/20);
+  }
+
+  .game-tag-small {
+    @apply px-3 py-1 rounded-full text-xs font-medium
+           bg-black/50 border border-white/20 backdrop-blur-sm
+           text-white/90;
+  }
+
+  .small-videos-grid {
+    @apply grid grid-cols-1 gap-4 col-span-1 row-span-2;
+  }
+
+  .video-card-small {
+    @apply relative overflow-hidden backdrop-blur-sm
+           border border-white/10 rounded-xl
+           transition-all duration-500 transform-gpu;
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  .video-card-small:hover {
+    @apply border-primary/30;
+    box-shadow: 0 0 30px -5px theme(colors.primary.DEFAULT/30),
+      0 0 15px -3px theme(colors.accent.DEFAULT/20);
+    transform: scale(1.02) translateZ(20px);
+  }
+
+  .space-station-display {
+    @apply relative w-full max-w-4xl mx-auto transform-gpu;
+    perspective: 1500px;
+  }
+
+  .viewport-frame {
+    @apply relative grid gap-4;
+    grid-template-columns: 2fr 1fr;
+  }
+
+  .main-viewport {
+    @apply relative overflow-hidden rounded-lg border-2 border-primary/30
+           bg-space-darker shadow-2xl;
+    box-shadow: 0 0 40px -10px theme(colors.primary.DEFAULT/30),
+      0 0 100px -30px theme(colors.accent.DEFAULT/30),
+      inset 0 0 30px theme(colors.primary.DEFAULT/10);
+  }
+
+  .viewport-overlay {
+    @apply absolute inset-0 pointer-events-none;
+    background: linear-gradient(transparent 50%, theme(colors.space.darker/80)),
+      linear-gradient(
+          90deg,
+          theme(colors.primary.DEFAULT/10) 1px,
+          transparent 1px
+        )
+        0 0 / 40px 100%,
+      linear-gradient(theme(colors.primary.DEFAULT/10) 1px, transparent 1px) 0 0 /
+        100% 40px;
+  }
+
+  .scanner-line {
+    @apply absolute inset-0 pointer-events-none opacity-50;
+    background: linear-gradient(
+      180deg,
+      transparent 0%,
+      theme(colors.primary.DEFAULT/30) 50%,
+      transparent 100%
+    );
+    animation: scan 4s ease-in-out infinite;
+  }
+
+  .viewport-content {
+    @apply absolute bottom-0 left-0 right-0 p-6 z-10;
+    background: linear-gradient(
+      to top,
+      theme(colors.space.darker) 0%,
+      theme(colors.space.darker/80) 50%,
+      transparent 100%
+    );
+  }
+
+  .status-badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium
+           bg-primary/20 text-primary-light border border-primary/30
+           backdrop-blur-sm;
+    text-shadow: 0 0 10px theme(colors.primary.light/50);
+  }
+
+  .side-monitors {
+    @apply space-y-4;
+  }
+
+  .monitor-small {
+    @apply relative overflow-hidden rounded-md border border-accent/20
+           bg-space-dark/50 backdrop-blur-sm;
+    box-shadow: 0 0 20px -5px theme(colors.accent.DEFAULT/20),
+      inset 0 0 15px theme(colors.accent.DEFAULT/10);
+  }
+
+  .monitor-overlay {
+    @apply absolute inset-0 opacity-0 transition-opacity duration-300
+           bg-gradient-to-t from-space-darker via-transparent to-transparent;
+  }
+
+  .monitor-content {
+    @apply absolute bottom-2 left-2;
+  }
+
+  .monitor-badge {
+    @apply px-2 py-0.5 text-xs font-medium rounded-md
+           bg-accent/20 text-accent-light border border-accent/30;
+  }
+
+  .showcase-container {
+    @apply relative w-full max-w-4xl mx-auto;
+    perspective: 2000px;
+  }
+
+  .video-showcase {
+    @apply grid gap-4;
+    grid-template-columns: 3fr 1fr;
+  }
+
+  .feature-video {
+    @apply relative overflow-hidden rounded-xl;
+    box-shadow: 0 0 50px -10px theme(colors.primary.DEFAULT/40),
+      inset 0 2px 10px theme(colors.accent.DEFAULT/20);
+  }
+
+  .video-frame {
+    @apply relative aspect-video overflow-hidden rounded-xl border border-primary/20
+           bg-space-darker transition-all duration-500;
+    transform-style: preserve-3d;
+  }
+
+  .showcase-video {
+    @apply w-full h-full object-cover transform transition-transform duration-700;
+  }
+
+  .video-info {
+    @apply absolute bottom-0 left-0 right-0 p-4 z-10;
+    background: linear-gradient(
+      to top,
+      theme(colors.space.darker) 0%,
+      transparent 100%
+    );
+  }
+
+  .video-title {
+    @apply text-lg font-bold bg-clip-text text-transparent bg-gradient-to-r 
+           from-white to-primary-light;
+    text-shadow: 0 0 20px theme(colors.primary.DEFAULT/50);
+  }
+
+  .secondary-videos {
+    @apply flex flex-col gap-4;
+  }
+
+  .video-frame-small {
+    @apply relative aspect-video overflow-hidden rounded-lg border border-accent/20
+           bg-space-dark transition-all duration-300;
+  }
+
+  .video-frame-small:hover {
+    @apply border-accent;
+    box-shadow: 0 0 30px -5px theme(colors.accent.DEFAULT/30),
+      inset 0 0 20px theme(colors.accent.DEFAULT/20);
+    transform: translateX(-10px) scale(1.02);
+  }
+
+  .video-info-small {
+    @apply absolute inset-0 flex items-center justify-center opacity-0 
+           transition-opacity duration-300 bg-space-darker/60 backdrop-blur-sm;
+  }
+
+  .video-frame-small:hover .video-info-small {
+    @apply opacity-100;
+  }
+
+  .video-badge {
+    @apply px-3 py-1 rounded-full text-sm font-medium
+           bg-gradient-to-r from-primary/30 to-accent/30
+           border border-white/20 backdrop-blur-md;
+    box-shadow: 0 0 20px theme(colors.primary.DEFAULT/30);
+  }
+
+  .showcase-matrix {
+    @apply grid gap-6 h-full;
+    grid-template-columns: 1.5fr 1fr;
+  }
+
+  .showcase-primary {
+    @apply h-full;
+  }
+
+  .showcase-secondary {
+    @apply grid gap-4;
+    grid-template-rows: repeat(3, 1fr);
+  }
+
+  .video-panel {
+    @apply relative overflow-hidden rounded-2xl border border-white/10
+           backdrop-blur-lg transition-all duration-500;
+    background: rgba(3, 7, 17, 0.6);
+  }
+
+  .video-panel.primary {
+    @apply h-full;
+    box-shadow: 0 0 40px -10px theme(colors.primary.DEFAULT/30),
+      0 0 100px -30px theme(colors.accent.DEFAULT/20);
+  }
+
+  .video-panel.secondary {
+    @apply h-full;
+    box-shadow: 0 0 20px -5px theme(colors.primary.DEFAULT/20);
+  }
+
+  .video-panel:hover {
+    @apply border-primary/30 transform;
+    box-shadow: 0 0 50px -10px theme(colors.primary.DEFAULT/40),
+      0 0 120px -40px theme(colors.accent.DEFAULT/30);
+  }
+
+  .video-panel.primary:hover {
+    transform: scale(1.02) translateY(-5px);
+  }
+
+  .video-panel.secondary:hover {
+    transform: scale(1.05) translateX(-10px);
+  }
+
+  .video-content {
+    @apply absolute inset-0 w-full h-full object-cover;
+    filter: brightness(0.8) contrast(1.1);
+  }
+
+  .panel-overlay {
+    @apply absolute inset-0 bg-gradient-to-t from-space-darker 
+           via-transparent to-transparent opacity-0 transition-opacity 
+           duration-300;
+  }
+
+  .video-panel:hover .panel-overlay {
+    @apply opacity-100;
+  }
+
+  .panel-content {
+    @apply absolute bottom-0 left-0 right-0 p-6 z-10;
+  }
+
+  .game-title {
+    @apply text-2xl font-bold mb-2;
+    background: linear-gradient(to right, #fff, theme(colors.primary.light));
+    -webkit-background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 20px theme(colors.primary.DEFAULT/50);
+  }
+
+  .game-description {
+    @apply text-white/80 text-sm;
+  }
+
+  .game-badge {
+    @apply px-3 py-1 rounded-full text-sm font-medium
+           bg-gradient-to-r from-primary/20 to-accent/20
+           border border-white/20 backdrop-blur-sm;
+    box-shadow: 0 0 15px theme(colors.primary.DEFAULT/30);
+  }
+
+  .panel-effects {
+    @apply absolute inset-0 pointer-events-none opacity-0 
+           transition-opacity duration-300;
+  }
+
+  .video-panel:hover .panel-effects {
+    @apply opacity-100;
+  }
+
+  .main-screen {
+    @apply relative transform-gpu;
+    height: 100%;
+  }
+
+  .cinematic-showcase {
+    @apply grid gap-6 h-full;
+    grid-template-columns: 1.8fr 1fr;
+  }
+
+  .main-screen {
+    @apply h-full relative transform-gpu;
+    perspective: 2000px;
+  }
+
+  .hologram-video {
+    @apply absolute inset-0 w-full h-full object-cover;
+    filter: contrast(1.1) saturate(1.2);
+  }
+
+  .hologram-overlay {
+    @apply absolute inset-0 bg-gradient-to-t from-space-darker via-transparent;
+    backdrop-filter: blur(4px);
+  }
+
+  .hologram-content {
+    @apply absolute bottom-0 left-0 right-0 p-8 z-10;
+  }
+
+  .hologram-title {
+    @apply text-3xl font-bold mb-4;
+    background: linear-gradient(to right, #fff, theme(colors.primary.light));
+    -webkit-background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 30px theme(colors.primary.DEFAULT/60);
+  }
+
+  .hologram-stats {
+    @apply flex gap-6;
+  }
+
+  .stat-item {
+    @apply flex flex-col;
+  }
+
+  .stat-value {
+    @apply text-2xl font-bold text-white;
+    text-shadow: 0 0 20px theme(colors.primary.DEFAULT/50);
+  }
+
+  .stat-label {
+    @apply text-sm text-white/60;
+  }
+
+  .scanner {
+    @apply absolute inset-0 pointer-events-none;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      theme(colors.primary.DEFAULT/10) 50%,
+      transparent
+    );
+    animation: scan 4s ease-in-out infinite;
+  }
+
+  .interference {
+    @apply absolute inset-0 opacity-20;
+    background-image: repeating-linear-gradient(
+      transparent 0%,
+      transparent 98%,
+      theme(colors.primary.DEFAULT/80) 100%
+    );
+    background-size: 100% 3px;
+    animation: interference 60s linear infinite;
+  }
+
+  .side-screens {
+    @apply flex flex-col gap-3;
+  }
+
+  .side-screen {
+    @apply relative flex-1;
+  }
+
+  .side-video {
+    @apply absolute inset-0 w-full h-full object-cover;
+    filter: brightness(0.8) saturate(1.1);
+  }
+
+  .side-overlay {
+    @apply absolute inset-0 bg-gradient-to-r from-space-darker via-transparent
+           opacity-0 transition-opacity duration-300;
+  }
+
+  .side-content {
+    @apply absolute bottom-0 left-0 p-4;
+  }
+
+  .game-category {
+    @apply inline-block px-2 py-1 rounded-md text-xs font-medium
+           bg-accent/20 text-white/90 backdrop-blur-sm
+           border border-accent/30 mb-2;
+  }
+
+  .side-title {
+    @apply text-lg font-bold text-white;
+    text-shadow: 0 0 15px theme(colors.accent.DEFAULT/50);
+  }
+
+  .main-screen {
+    @apply relative h-full min-h-[400px];
+  }
+
+  .video-display {
+    @apply grid gap-5 max-w-5xl mx-auto;
+    grid-template-columns: 3fr 2fr;
+    height: 600px;
+  }
+
+  .featured-game {
+    @apply h-full;
+  }
+
+  .video-container {
+    @apply relative w-full h-full overflow-hidden rounded-2xl 
+           transition-transform duration-300 ease-out;
+    background: theme(colors.space.darker);
+  }
+
+  .video-container.primary {
+    @apply border border-primary/20;
+    box-shadow: 0 0 40px theme(colors.primary.DEFAULT/15);
+  }
+
+  .video-container.secondary {
+    @apply border border-accent/10 h-[32%];
+    box-shadow: 0 0 20px theme(colors.accent.DEFAULT/10);
+  }
+
+  .game-video {
+    @apply absolute inset-0 w-full h-full object-cover transition-all duration-500;
+    filter: brightness(0.85) contrast(1.05) saturate(0.9);
+  }
+
+  .video-container:hover .game-video,
+  .video-container-3d:hover .game-video,
+  .main-video-container:hover .game-video,
+  .side-video-container:hover .game-video {
+    filter: brightness(1) contrast(1) saturate(1);
+  }
+
+  .video-container-3d:hover .game-video {
+    filter: brightness(1) saturate(1.2) contrast(1.1);
+  }
+
+  .content-overlay {
+    @apply absolute inset-0 bg-gradient-to-t from-space-darker via-space-darker/50 to-transparent
+           opacity-90 transition-opacity duration-300;
+  }
+
+  .video-container:hover .content-overlay {
+    @apply opacity-100;
+  }
+
+  .game-info {
+    @apply absolute bottom-0 left-0 p-6 w-full;
+  }
+
+  .game-status {
+    @apply inline-block px-3 py-1 mb-3 text-sm font-medium rounded-full
+           bg-primary/20 text-primary-light border border-primary/30;
+  }
+
+  .game-name {
+    @apply text-2xl font-bold mb-1 text-white;
+    text-shadow: 0 2px 10px theme(colors.space.darker);
+  }
+
+  .game-meta {
+    @apply text-sm text-white/70;
+  }
+
+  .game-list {
+    @apply flex flex-col justify-between h-full;
+  }
+
+  .game-info-compact {
+    @apply absolute bottom-0 left-0 p-4 w-full;
+  }
+
+  .game-genre {
+    @apply inline-block px-2 py-0.5 text-xs font-medium rounded-md
+           bg-accent/20 text-white/90 border border-accent/30 mb-1;
+  }
+
+  .game-title {
+    @apply text-lg font-semibold text-white;
+    text-shadow: 0 2px 8px theme(colors.space.darker);
+  }
+
+  .video-container:hover {
+    transform: scale(1.02);
+  }
+
+  .video-container.primary:hover {
+    box-shadow: 0 0 60px theme(colors.primary.DEFAULT/20);
+  }
+
+  .video-container.secondary:hover {
+    box-shadow: 0 0 30px theme(colors.accent.DEFAULT/15);
+  }
+
+  .perspective-3d {
+    @apply relative;
+    perspective: 2000px;
+    transform-style: preserve-3d;
+  }
+
+  .video-display-3d {
+    @apply grid gap-5 max-w-5xl mx-auto;
+    grid-template-columns: 3fr 2fr;
+    height: 600px;
+    transform-style: preserve-3d;
+  }
+
+  .featured-game-3d {
+    @apply h-full transform-gpu;
+    transform-style: preserve-3d;
+  }
+
+  .video-container-3d {
+    @apply relative w-full h-full rounded-2xl transform-gpu backdrop-blur-lg z-0;
+    background: rgba(3, 7, 17, 0.85);
+    box-shadow: 0 0 60px -15px theme(colors.primary.DEFAULT/40);
+    transform-style: preserve-3d;
+    isolation: isolate;
+  }
+
+  .video-container-3d.primary {
+    @apply border-2 border-primary/20;
+    box-shadow: 0 20px 60px theme(colors.primary.DEFAULT/20);
+  }
+
+  .video-container-3d.secondary {
+    @apply border border-accent/10 h-[32%];
+    box-shadow: 0 10px 30px theme(colors.accent.DEFAULT/15);
+  }
+
+  .video-inner {
+    @apply relative w-full h-full rounded-2xl overflow-hidden;
+    transform-style: preserve-3d;
+    background: rgba(3, 7, 17, 0.9);
+  }
+
+  .video-inner::before {
+    content: "";
+    @apply absolute inset-0 z-10 transition-opacity duration-300;
+    background: linear-gradient(
+      45deg,
+      theme(colors.primary.DEFAULT/10),
+      theme(colors.accent.DEFAULT/10)
+    );
+    mix-blend-mode: color-dodge;
+    opacity: 0.3;
+  }
+
+  .video-container-3d:hover .video-inner::before {
+    opacity: 0;
+  }
+
+  .video-inner::before {
+    content: "";
+    @apply absolute inset-0 z-10 transition-opacity duration-300;
+    background: linear-gradient(
+      45deg,
+      theme(colors.primary.DEFAULT/20),
+      theme(colors.accent.DEFAULT/20)
+    );
+    mix-blend-mode: color;
+    opacity: 0.25;
+  }
+
+  .video-container-3d:hover .video-inner::before {
+    opacity: 0;
+  }
+
+  .reflection-layer {
+    @apply absolute inset-0 opacity-0 transition-opacity duration-300;
+    background: linear-gradient(
+      to bottom,
+      theme(colors.primary.DEFAULT/10) 0%,
+      theme(colors.accent.DEFAULT/5) 100%
+    );
+    mix-blend-mode: soft-light;
+  }
+
+  .video-container-3d:hover .reflection-layer {
+    @apply opacity-100;
+  }
+
+  .game-list-3d {
+    @apply flex flex-col justify-between h-full transform-gpu;
+    transform-style: preserve-3d;
+  }
+
+  .floating {
+    transform: translateZ(20px);
+    transition: transform 0.3s ease-out;
+  }
+
+  .video-container-3d:hover .floating {
+    transform: translateZ(40px);
+  }
+
+  .content-overlay {
+    @apply absolute inset-0 bg-gradient-to-t from-space-darker via-space-darker/50 to-transparent
+           opacity-90 transition-all duration-300;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    z-index: 2; /* Ensure content stays above the shine effect */
+  }
+
+  /* Update existing hover effects */
+  .video-container-3d:hover {
+    .content-overlay {
+      @apply opacity-100;
+      transform: translateZ(1px);
+    }
+
+    .game-video {
+      transform: scale(1.1) translateZ(-20px);
+    }
+  }
+
+  .game-video {
+    @apply absolute inset-0 w-full h-full object-cover transition-transform duration-300;
+    transform: translateZ(0);
+  }
+
+  .video-container-3d::after {
+    content: "";
+    @apply absolute inset-0 rounded-2xl opacity-0;
+    background: linear-gradient(
+      135deg,
+      transparent 0%,
+      theme(colors.primary.light/30) 50%,
+      transparent 100%
+    );
+    transition: opacity 0.3s ease;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .video-container-3d:hover::after {
+    @apply opacity-100;
+    animation: none; /* Remove infinite animation */
+  }
+
+  .cosmic-shape {
+    @apply absolute rounded-3xl backdrop-blur-sm;
+    background: linear-gradient(
+      135deg,
+      rgba(96, 165, 250, 0.03) 0%,
+      rgba(139, 92, 246, 0.02) 100%
+    );
+    border: 1px solid theme(colors.primary.DEFAULT/10);
+    width: 450px;
+    height: 450px;
+  }
+
+  .cosmic-shape.primary {
+    background: linear-gradient(
+      135deg,
+      theme(colors.primary.DEFAULT/3) 0%,
+      transparent 100%
+    );
+    box-shadow: 0 0 80px -20px theme(colors.primary.DEFAULT/20),
+      inset 0 0 50px theme(colors.primary.DEFAULT/5);
+    opacity: 0.15;
+  }
+
+  .cosmic-shape.accent {
+    background: linear-gradient(
+      -45deg,
+      theme(colors.accent.DEFAULT/3) 0%,
+      transparent 100%
+    );
+    box-shadow: 0 0 60px -15px theme(colors.accent.DEFAULT/20),
+      inset 0 0 40px theme(colors.accent.DEFAULT/5);
+    opacity: 0.1;
+    width: 350px;
+    height: 350px;
+  }
+
+  .perspective-container {
+    @apply relative w-full;
+    perspective: 2000px;
+    perspective-origin: 65% 50%;
+  }
+
+  .floating-grid {
+    @apply relative transform-gpu;
+    transform-style: preserve-3d;
+    transform: translateZ(-100px);
+  }
+
+  .grid-3d-container {
+    @apply grid gap-6 max-w-5xl mx-auto;
+    grid-template-columns: 3fr 2fr;
+    transform-style: preserve-3d;
+    transform: rotateX(5deg) rotateY(-10deg);
+  }
+
+  .featured-section {
+    transform-style: preserve-3d;
+    transform: translateZ(30px);
+  }
+
+  .main-video-container {
+    @apply relative rounded-2xl overflow-hidden;
+    transform-style: preserve-3d;
+    background: rgba(3, 7, 17, 0.95);
+    border: 1px solid theme(colors.primary.DEFAULT/20);
+    height: 600px;
+    box-shadow: 0 10px 30px theme(colors.primary.DEFAULT/10);
+  }
+
+  /* Add subtle grid pattern */
+  .main-video-container::before {
+    content: "";
+    @apply absolute inset-0 opacity-10;
+    background-image: linear-gradient(
+        theme(colors.primary.DEFAULT/5) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        theme(colors.primary.DEFAULT/5) 1px,
+        transparent 1px
+      );
+    background-size: 20px 20px;
+    background-position: -1px -1px;
+  }
+
+  .side-video-container {
+    @apply relative rounded-xl overflow-hidden;
+    transform-style: preserve-3d;
+    transform: translateZ(calc(var(--depth) * -1));
+    height: calc((600px - 2rem) / 3);
+    background: rgba(3, 7, 17, 0.95);
+    border: 1px solid theme(colors.accent.DEFAULT/15);
+    box-shadow: 0 5px 15px theme(colors.accent.DEFAULT/10);
+  }
+
+  /* Add same pattern to side containers */
+  .side-video-container::before {
+    content: "";
+    @apply absolute inset-0 opacity-5;
+    background-image: linear-gradient(
+        theme(colors.accent.DEFAULT/5) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        theme(colors.accent.DEFAULT/5) 1px,
+        transparent 1px
+      );
+    background-size: 15px 15px;
+    background-position: -1px -1px;
+  }
+
+  /* Update hover effects */
+  .main-video-container:hover,
+  .side-video-container:hover {
+    box-shadow: 0 15px 40px theme(colors.primary.DEFAULT/15);
+  }
+
+  .main-video-container:hover::before,
+  .side-video-container:hover::before {
+    @apply opacity-15;
+  }
+
+  .video-depth-layer {
+    @apply absolute inset-0;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      theme(colors.space.darker/30)
+    );
+    transform: translateZ(-10px);
+  }
+
+  .side-section {
+    @apply flex flex-col gap-4;
+    transform-style: preserve-3d;
+  }
+
+  .side-video-container {
+    @apply relative rounded-xl overflow-hidden;
+    transform-style: preserve-3d;
+    transform: translateZ(calc(var(--depth) * -1));
+    height: calc((600px - 2rem) / 3);
+    background: rgba(3, 7, 17, 0.8);
+    box-shadow: 0 10px 30px theme(colors.accent.DEFAULT/15),
+      0 0 20px theme(colors.accent.DEFAULT/10);
+    border: 1px solid theme(colors.accent.DEFAULT/20);
+  }
+
+  .depth-shadows {
+    @apply absolute inset-0;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      theme(colors.space.darker/20)
+    );
+    transform: translateZ(-5px);
+  }
+
+  .floating-content {
+    transform: translateZ(20px);
+  }
+
+  .game-info-compact {
+    transform: translateZ(10px);
+  }
+
+  /* Add a subtle scanline effect */
+  .video-inner::after {
+    content: "";
+    @apply absolute inset-0 pointer-events-none opacity-10;
+    background: repeating-linear-gradient(
+      0deg,
+      theme(colors.primary.DEFAULT/10) 0px,
+      theme(colors.primary.DEFAULT/10) 1px,
+      transparent 1px,
+      transparent 2px
+    );
+    transform: translateZ(5px);
+  }
+
+  /* Enhanced hover effects */
+  .main-video-container:hover,
+  .side-video-container:hover {
+    .depth-shadows {
+      background: linear-gradient(
+        to bottom,
+        theme(colors.primary.DEFAULT/10),
+        theme(colors.space.darker/30)
+      );
+      opacity: 0.25;
+    }
+
+    .video-inner::after {
+      opacity: 0.2;
+    }
+  }
+
+  .cosmic-partners {
+    @apply flex items-center gap-6 pt-8 relative;
+    &::after {
+      content: "";
+      @apply absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent 
+             opacity-0 transition-opacity duration-300;
+    }
+    &:hover::after {
+      @apply opacity-100;
+    }
+  }
+}
+
+@layer utilities {
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .bg-gradient-gaming {
+    @apply bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_100%];
+  }
+
+  .bg-hexagon-pattern {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l25.98 15v30L30 60 4.02 45V15z' fill-opacity='0.1' fill='%234F46E5'/%3E%3C/svg%3E");
+    background-size: 24px 24px;
+  }
+
+  @keyframes gradient-slide {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+}
+
+/* Simplified particle system - keep only 5 particles */
+.particle {
+  @apply absolute rounded-full bg-primary/20 pointer-events-none;
+  animation: float-random 20s infinite linear;
+}
+
+.particle-1 {
+  --size: 12px;
+  --tx: 300px;
+  --ty: 200px;
+  width: var(--size);
+  height: var(--size);
+  top: 20vh;
+  left: 30vw;
+  opacity: 0.3;
+}
+.particle-2 {
+  --size: 15px;
+  --tx: -200px;
+  --ty: 400px;
+  width: var(--size);
+  height: var(--size);
+  top: 45vh;
+  left: 70vw;
+  opacity: 0.5;
+}
+.particle-3 {
+  --size: 10px;
+  --tx: 400px;
+  --ty: -300px;
+  width: var(--size);
+  height: var(--size);
+  top: 80vh;
+  left: 20vw;
+  opacity: 0.2;
+}
+.particle-4 {
+  --size: 18px;
+  --tx: -350px;
+  --ty: 250px;
+  width: var(--size);
+  height: var(--size);
+  top: 30vh;
+  left: 85vw;
+  opacity: 0.4;
+}
+.particle-5 {
+  --size: 14px;
+  --tx: 250px;
+  --ty: -200px;
+  width: var(--size);
+  height: var(--size);
+  top: 65vh;
+  left: 40vw;
+  opacity: 0.6;
+}
+
+@keyframes float-random {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(var(--tx), var(--ty));
+  }
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes cosmic-ray {
+  0%,
+  100% {
+    transform: translateY(-100%) rotate(45deg);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(100%) rotate(45deg);
+    opacity: 0.5;
+  }
+}
+
+@keyframes star-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
+@keyframes orbit {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes star-zoom {
+  0% {
+    transform: translateZ(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateZ(400px);
+    opacity: 0;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.5);
+  }
+}
+
+@keyframes star-twinkle {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: translateZ(0) scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translateZ(100px) scale(1.2);
+  }
+}
+
+@keyframes aurora-flow {
+  0%,
+  100% {
+    transform: translateY(-100%) rotate(20deg) scaleY(2);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(100%) rotate(20deg) scaleY(1);
+    opacity: 0.5;
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    opacity: 0.95;
+    filter: brightness(1);
+  }
+  50% {
+    opacity: 1;
+    filter: brightness(1.2);
+  }
+}
+
+@keyframes scan {
+  0%,
+  100% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(100%);
+    opacity: 0.5;
+  }
+}
+
+@keyframes scan-lines {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes interference {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 100%;
+  }
 }
