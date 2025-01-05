@@ -3,21 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #0f172a;
-  --gaming-gradient: linear-gradient(
-    135deg,
-    #4f46e5 0%,
-    #06b6d4 50%,
-    #4f46e5 100%
-  );
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0f172a;
-    --foreground: #ffffff;
-  }
+  --background: #0f172a;
+  --foreground: #ffffff;
 }
 
 body {
@@ -28,41 +15,6 @@ body {
 @layer components {
   .container-custom {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
-  }
-
-  .btn-gaming {
-    @apply relative px-8 py-4 bg-primary rounded-lg font-medium text-white
-           overflow-hidden transition-all duration-300 hover:scale-105
-           active:scale-95 hover:shadow-glow-xl;
-  }
-
-  .btn-gaming-glow {
-    @apply absolute inset-0 bg-gradient-gaming opacity-0 
-           transition-opacity duration-300 group-hover:opacity-100;
-  }
-
-  .btn-secondary-gaming {
-    @apply px-8 py-4 rounded-lg font-medium border-2 border-current border-opacity-10
-           hover:border-accent transition-all duration-300
-           flex items-center backdrop-blur-sm hover:bg-accent/5;
-  }
-
-  .game-card {
-    @apply absolute inset-0 rounded-2xl overflow-hidden
-           border border-white/10 backdrop-blur-xl
-           transition-all duration-500 hover:scale-105;
-  }
-
-  .game-card-stack {
-    @apply relative w-full aspect-[4/3] transform-gpu;
-  }
-
-  .glitch-effect {
-    @apply relative inline-block text-transparent bg-clip-text bg-gradient-gaming
-           after:content-['Fennonauts'] after:absolute after:left-[2px] after:top-[2px]
-           after:text-primary/50 after:z-[-1]
-           before:content-['Fennonauts'] before:absolute before:left-[-2px] before:top-[-2px]
-           before:text-accent/50 before:z-[-1];
   }
 
   .bg-space {
@@ -152,21 +104,6 @@ body {
     filter: blur(10px);
   }
 
-  .console-grid {
-    @apply grid grid-cols-2 gap-6 transform-gpu;
-  }
-
-  .console-panel {
-    @apply rounded-2xl overflow-hidden border border-white/10 backdrop-blur-xl
-           transition-all duration-500 hover:scale-105 hover:border-primary/30
-           bg-white/5 shadow-lg hover:shadow-primary/20;
-  }
-
-  .space-icon {
-    @apply w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-accent
-           opacity-80 shadow-lg;
-  }
-
   .star-field {
     @apply absolute inset-0 overflow-hidden;
     transform-style: preserve-3d;
@@ -186,17 +123,6 @@ body {
     @apply absolute w-[1px] h-[1px] bg-space-stars rounded-full;
     box-shadow: 0 0 15px 1px theme(colors.space.stars);
     animation: star-twinkle 3s infinite;
-  }
-
-  .stars-container {
-    @apply absolute inset-0;
-    perspective: 500px;
-    transform-style: preserve-3d;
-  }
-
-  .floating-console {
-    @apply relative;
-    filter: drop-shadow(0 0 20px theme(colors.primary.DEFAULT/20));
   }
 
   .aurora-beam {
@@ -227,147 +153,12 @@ body {
     animation: pulse-glow 3s ease-in-out infinite;
   }
 
-  .game-video-card {
-    @apply relative overflow-hidden backdrop-blur-sm bg-space-dark/30
-           border border-white/10 rounded-2xl shadow-lg
-           transition-all duration-500;
-  }
-
-  .game-video-card:hover {
-    @apply border-primary/30 shadow-primary/20;
-    box-shadow: 0 0 30px -5px theme(colors.primary.DEFAULT/20),
-      inset 0 0 20px theme(colors.primary.DEFAULT/10);
-  }
-
-  .game-video-card::after {
-    content: "";
-    @apply absolute inset-0 rounded-2xl;
-    box-shadow: inset 0 0 20px theme(colors.space.darker/50);
-  }
-
-  .perspective-3d {
-    perspective: 2000px;
-    transform-style: preserve-3d;
-  }
-
-  .grid-container {
-    @apply grid gap-6 transform-gpu;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, minmax(0, 1fr));
-  }
-
-  .featured-video-card {
-    @apply col-span-2 row-span-2 rounded-2xl overflow-hidden;
-    transform: translateZ(0);
-    box-shadow: 0 0 40px -10px theme(colors.primary.DEFAULT/30),
-      0 0 20px -5px theme(colors.accent.DEFAULT/20);
-  }
-
-  .video-wrapper {
-    @apply relative w-full h-full overflow-hidden rounded-2xl
-           border border-white/10 backdrop-blur-sm;
-    background: rgba(255, 255, 255, 0.03);
-    transform-style: preserve-3d;
-  }
-
-  .video-content {
-    @apply absolute bottom-0 left-0 right-0 p-6 z-10
-           transform transition-transform duration-500;
-  }
-
   .video-overlay {
     @apply absolute inset-0 opacity-0 transition-opacity duration-500;
     background: linear-gradient(
       to top,
       theme(colors.primary.DEFAULT/20),
       theme(colors.accent.DEFAULT/10)
-    );
-  }
-
-  .video-wrapper:hover .video-overlay {
-    @apply opacity-100;
-  }
-
-  .game-tag {
-    @apply inline-block px-3 py-1 rounded-full text-xs font-medium
-           bg-gradient-to-r from-primary/20 to-accent/20
-           border border-white/10 backdrop-blur-sm;
-    box-shadow: 0 0 20px theme(colors.primary.DEFAULT/20);
-  }
-
-  .game-tag-small {
-    @apply px-3 py-1 rounded-full text-xs font-medium
-           bg-black/50 border border-white/20 backdrop-blur-sm
-           text-white/90;
-  }
-
-  .small-videos-grid {
-    @apply grid grid-cols-1 gap-4 col-span-1 row-span-2;
-  }
-
-  .video-card-small {
-    @apply relative overflow-hidden backdrop-blur-sm
-           border border-white/10 rounded-xl
-           transition-all duration-500 transform-gpu;
-    background: rgba(255, 255, 255, 0.02);
-  }
-
-  .video-card-small:hover {
-    @apply border-primary/30;
-    box-shadow: 0 0 30px -5px theme(colors.primary.DEFAULT/30),
-      0 0 15px -3px theme(colors.accent.DEFAULT/20);
-    transform: scale(1.02) translateZ(20px);
-  }
-
-  .space-station-display {
-    @apply relative w-full max-w-4xl mx-auto transform-gpu;
-    perspective: 1500px;
-  }
-
-  .viewport-frame {
-    @apply relative grid gap-4;
-    grid-template-columns: 2fr 1fr;
-  }
-
-  .main-viewport {
-    @apply relative overflow-hidden rounded-lg border-2 border-primary/30
-           bg-space-darker shadow-2xl;
-    box-shadow: 0 0 40px -10px theme(colors.primary.DEFAULT/30),
-      0 0 100px -30px theme(colors.accent.DEFAULT/30),
-      inset 0 0 30px theme(colors.primary.DEFAULT/10);
-  }
-
-  .viewport-overlay {
-    @apply absolute inset-0 pointer-events-none;
-    background: linear-gradient(transparent 50%, theme(colors.space.darker/80)),
-      linear-gradient(
-          90deg,
-          theme(colors.primary.DEFAULT/10) 1px,
-          transparent 1px
-        )
-        0 0 / 40px 100%,
-      linear-gradient(theme(colors.primary.DEFAULT/10) 1px, transparent 1px) 0 0 /
-        100% 40px;
-  }
-
-  .scanner-line {
-    @apply absolute inset-0 pointer-events-none opacity-50;
-    background: linear-gradient(
-      180deg,
-      transparent 0%,
-      theme(colors.primary.DEFAULT/30) 50%,
-      transparent 100%
-    );
-    animation: scan 4s ease-in-out infinite;
-  }
-
-  .viewport-content {
-    @apply absolute bottom-0 left-0 right-0 p-6 z-10;
-    background: linear-gradient(
-      to top,
-      theme(colors.space.darker) 0%,
-      theme(colors.space.darker/80) 50%,
-      transparent 100%
     );
   }
 
@@ -378,162 +169,10 @@ body {
     text-shadow: 0 0 10px theme(colors.primary.light/50);
   }
 
-  .side-monitors {
-    @apply space-y-4;
-  }
-
-  .monitor-small {
-    @apply relative overflow-hidden rounded-md border border-accent/20
-           bg-space-dark/50 backdrop-blur-sm;
-    box-shadow: 0 0 20px -5px theme(colors.accent.DEFAULT/20),
-      inset 0 0 15px theme(colors.accent.DEFAULT/10);
-  }
-
-  .monitor-overlay {
-    @apply absolute inset-0 opacity-0 transition-opacity duration-300
-           bg-gradient-to-t from-space-darker via-transparent to-transparent;
-  }
-
-  .monitor-content {
-    @apply absolute bottom-2 left-2;
-  }
-
-  .monitor-badge {
-    @apply px-2 py-0.5 text-xs font-medium rounded-md
-           bg-accent/20 text-accent-light border border-accent/30;
-  }
-
-  .showcase-container {
-    @apply relative w-full max-w-4xl mx-auto;
-    perspective: 2000px;
-  }
-
-  .video-showcase {
-    @apply grid gap-4;
-    grid-template-columns: 3fr 1fr;
-  }
-
-  .feature-video {
-    @apply relative overflow-hidden rounded-xl;
-    box-shadow: 0 0 50px -10px theme(colors.primary.DEFAULT/40),
-      inset 0 2px 10px theme(colors.accent.DEFAULT/20);
-  }
-
-  .video-frame {
-    @apply relative aspect-video overflow-hidden rounded-xl border border-primary/20
-           bg-space-darker transition-all duration-500;
-    transform-style: preserve-3d;
-  }
-
-  .showcase-video {
-    @apply w-full h-full object-cover transform transition-transform duration-700;
-  }
-
-  .video-info {
-    @apply absolute bottom-0 left-0 right-0 p-4 z-10;
-    background: linear-gradient(
-      to top,
-      theme(colors.space.darker) 0%,
-      transparent 100%
-    );
-  }
-
   .video-title {
     @apply text-lg font-bold bg-clip-text text-transparent bg-gradient-to-r 
            from-white to-primary-light;
     text-shadow: 0 0 20px theme(colors.primary.DEFAULT/50);
-  }
-
-  .secondary-videos {
-    @apply flex flex-col gap-4;
-  }
-
-  .video-frame-small {
-    @apply relative aspect-video overflow-hidden rounded-lg border border-accent/20
-           bg-space-dark transition-all duration-300;
-  }
-
-  .video-frame-small:hover {
-    @apply border-accent;
-    box-shadow: 0 0 30px -5px theme(colors.accent.DEFAULT/30),
-      inset 0 0 20px theme(colors.accent.DEFAULT/20);
-    transform: translateX(-10px) scale(1.02);
-  }
-
-  .video-info-small {
-    @apply absolute inset-0 flex items-center justify-center opacity-0 
-           transition-opacity duration-300 bg-space-darker/60 backdrop-blur-sm;
-  }
-
-  .video-frame-small:hover .video-info-small {
-    @apply opacity-100;
-  }
-
-  .video-badge {
-    @apply px-3 py-1 rounded-full text-sm font-medium
-           bg-gradient-to-r from-primary/30 to-accent/30
-           border border-white/20 backdrop-blur-md;
-    box-shadow: 0 0 20px theme(colors.primary.DEFAULT/30);
-  }
-
-  .showcase-matrix {
-    @apply grid gap-6 h-full;
-    grid-template-columns: 1.5fr 1fr;
-  }
-
-  .showcase-primary {
-    @apply h-full;
-  }
-
-  .showcase-secondary {
-    @apply grid gap-4;
-    grid-template-rows: repeat(3, 1fr);
-  }
-
-  .video-panel {
-    @apply relative overflow-hidden rounded-2xl border border-white/10
-           backdrop-blur-lg transition-all duration-500;
-    background: rgba(3, 7, 17, 0.6);
-  }
-
-  .video-panel.primary {
-    @apply h-full;
-    box-shadow: 0 0 40px -10px theme(colors.primary.DEFAULT/30),
-      0 0 100px -30px theme(colors.accent.DEFAULT/20);
-  }
-
-  .video-panel.secondary {
-    @apply h-full;
-    box-shadow: 0 0 20px -5px theme(colors.primary.DEFAULT/20);
-  }
-
-  .video-panel:hover {
-    @apply border-primary/30 transform;
-    box-shadow: 0 0 50px -10px theme(colors.primary.DEFAULT/40),
-      0 0 120px -40px theme(colors.accent.DEFAULT/30);
-  }
-
-  .video-panel.primary:hover {
-    transform: scale(1.02) translateY(-5px);
-  }
-
-  .video-panel.secondary:hover {
-    transform: scale(1.05) translateX(-10px);
-  }
-
-  .video-content {
-    @apply absolute inset-0 w-full h-full object-cover;
-    filter: brightness(0.8) contrast(1.1);
-  }
-
-  .panel-overlay {
-    @apply absolute inset-0 bg-gradient-to-t from-space-darker 
-           via-transparent to-transparent opacity-0 transition-opacity 
-           duration-300;
-  }
-
-  .video-panel:hover .panel-overlay {
-    @apply opacity-100;
   }
 
   .panel-content {
@@ -562,10 +201,6 @@ body {
   .panel-effects {
     @apply absolute inset-0 pointer-events-none opacity-0 
            transition-opacity duration-300;
-  }
-
-  .video-panel:hover .panel-effects {
-    @apply opacity-100;
   }
 
   .main-screen {
@@ -631,17 +266,6 @@ body {
       transparent
     );
     animation: scan 4s ease-in-out infinite;
-  }
-
-  .interference {
-    @apply absolute inset-0 opacity-20;
-    background-image: repeating-linear-gradient(
-      transparent 0%,
-      transparent 98%,
-      theme(colors.primary.DEFAULT/80) 100%
-    );
-    background-size: 100% 3px;
-    animation: interference 60s linear infinite;
   }
 
   .side-screens {
@@ -778,12 +402,6 @@ body {
 
   .video-container.secondary:hover {
     box-shadow: 0 0 30px theme(colors.accent.DEFAULT/15);
-  }
-
-  .perspective-3d {
-    @apply relative;
-    perspective: 2000px;
-    transform-style: preserve-3d;
   }
 
   .video-display-3d {
@@ -1163,6 +781,54 @@ body {
       background-position: 0% 50%;
     }
   }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+
+  .animate-float {
+    animation: float 10s ease-in-out infinite;
+  }
+
+  .animate-slide-in {
+    animation: slideIn 0.5s ease-out forwards;
+  }
+
+  .animate-bounce-slow {
+    animation: bounceSlow 2s infinite;
+  }
+
+  .hover-tilt {
+    transition: transform 0.3s ease-out;
+  }
+
+  .hover-tilt:hover {
+    transform: scale(1.02) rotateX(-2deg) rotateY(5deg) translateZ(30px);
+  }
+
+  .scale-102 {
+    transform: scale(1.02);
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+  }
 }
 
 /* Simplified particle system - keep only 5 particles */
@@ -1362,20 +1028,53 @@ body {
   }
 }
 
-@keyframes scan-lines {
+@keyframes fadeInUp {
   from {
-    transform: translateY(-100%);
+    opacity: 0;
+    transform: translateY(50px);
   }
   to {
-    transform: translateY(100%);
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-@keyframes interference {
-  0% {
-    background-position: 0 0;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes float {
+  0%,
   100% {
-    background-position: 0 100%;
+    transform: translate3d(0, 0, 0) rotateX(2deg) rotateY(-5deg);
+  }
+  50% {
+    transform: translate3d(0, 0, 0) rotateX(5deg) rotateY(2deg);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes bounceSlow {
+  0%,
+  100% {
+    transform: translateY(0) translateX(-50%);
+  }
+  50% {
+    transform: translateY(10px) translateX(-50%);
   }
 }

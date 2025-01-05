@@ -1,6 +1,6 @@
 "use client";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { FaRocket } from "react-icons/fa";
 
 export default function Navbar() {
@@ -9,22 +9,24 @@ export default function Navbar() {
   const background = useTransform(
     scrollY,
     [0, 100],
-    ["rgba(3, 7, 17, 0)", "rgba(3, 7, 17, 0.85)"]
+    ["rgba(3, 7, 17, 0)", "rgba(3, 7, 17, 0.95)"]
   );
 
+  const handleScroll = useCallback(() => {
+    setIsScrolled(window.scrollY > 20);
+  }, []);
+
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [handleScroll]);
 
   return (
     <motion.nav
       style={{ background }}
-      className={`fixed top-0 w-full z-50 backdrop-blur-sm transition-all duration-300 
-                 ${isScrolled ? "border-b border-white/10" : ""}`}
+      className={`fixed top-0 w-full z-50 backdrop-blur-sm transition-all duration-300 ${
+        isScrolled ? "border-b border-white/5" : ""
+      }`}
     >
       <div className="container-custom">
         <div className="flex items-center justify-between h-16">
