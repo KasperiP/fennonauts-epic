@@ -746,6 +746,30 @@ body {
     background-clip: text;
     color: transparent;
   }
+
+  .scroll-indicator-container {
+    @apply absolute bottom-6 left-1/2 -translate-x-1/2 hidden sm:flex flex-col items-center gap-2 
+           opacity-40 hover:opacity-70 transition-all duration-500 cursor-pointer;
+  }
+
+  .scroll-indicator-text {
+    @apply text-[10px] text-white/70 tracking-[0.2em] uppercase font-mono;
+    text-shadow: 0 0 8px theme(colors.primary.DEFAULT/30);
+  }
+
+  .scroll-indicator-circle {
+    @apply h-10 w-6 rounded-full border border-white/10 relative
+           backdrop-blur-sm bg-space-dark/20;
+    box-shadow: 0 0 15px theme(colors.primary.DEFAULT/10),
+      inset 0 0 10px theme(colors.primary.DEFAULT/5);
+  }
+
+  .scroll-indicator-dot {
+    @apply absolute top-2 left-1/2 -translate-x-1/2 w-1.5 h-1.5 
+           bg-gradient-to-b from-white/80 to-primary-light/80 rounded-full;
+    animation: scrollDot 2.5s cubic-bezier(0.76, 0, 0.24, 1) infinite;
+    box-shadow: 0 0 6px theme(colors.primary.DEFAULT/50);
+  }
 }
 
 @layer utilities {
@@ -795,6 +819,22 @@ body {
   .animate-fade-in-up {
     animation: fadeInUp 0.8s ease-out forwards;
     opacity: 0;
+  }
+
+  @keyframes scrollDot {
+    0% {
+      transform: translate(-50%, 0);
+      opacity: 0.8;
+    }
+    50% {
+      transform: translate(-50%, 16px);
+      opacity: 0;
+    }
+    51%,
+    100% {
+      transform: translate(-50%, 0);
+      opacity: 0;
+    }
   }
 }
 

@@ -221,10 +221,11 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Adjust scroll indicator position */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 animate-bounce-slow hidden sm:block">
-        <div className="w-6 h-10 rounded-full border-2 border-foreground/20 flex items-start justify-center p-2">
-          <div className="w-1 h-2 bg-foreground/60 rounded-full"></div>
+      {/* Scroll Indicator */}
+      <div className="scroll-indicator-container">
+        <span className="scroll-indicator-text">Scroll Down</span>
+        <div className="scroll-indicator-circle">
+          <div className="scroll-indicator-dot"></div>
         </div>
       </div>
     </section>
