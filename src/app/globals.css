@@ -435,11 +435,29 @@ body {
     @screen lg {
       grid-template-columns: 3fr 2fr;
     }
-    transform-style: preserve-3d;
     transform: rotateX(2deg) rotateY(-5deg);
     @screen lg {
       transform: rotateX(5deg) rotateY(-10deg);
     }
+  }
+
+  .side-section-wrapper {
+    transform-style: preserve-3d;
+  }
+
+  .side-video-container {
+    @apply relative rounded-xl overflow-hidden transition-all duration-300;
+    transform-style: preserve-3d;
+    height: 180px;
+    @screen lg {
+      height: calc((600px - 2rem) / 3);
+    }
+    background: rgba(3, 7, 17, 0.95);
+    border: 1px solid theme(colors.accent.DEFAULT/15);
+    box-shadow: 0 1px 4px theme(colors.accent.DEFAULT/3),
+      0 2px 8px theme(colors.space.darker/10);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform; /* Optimize transform performance */
   }
 
   .grid-3d-container::before {
@@ -531,20 +549,32 @@ body {
     box-shadow: 0 1px 4px theme(colors.accent.DEFAULT/3),
       0 2px 8px theme(colors.space.darker/10);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
 
-    &::after {
-      content: "";
-      @apply absolute inset-0;
-      background: linear-gradient(
-        to right,
-        transparent,
-        theme(colors.primary.DEFAULT/30),
-        transparent
-      );
-      transform: translateX(-100%);
-      opacity: 0;
-      transition: all 0.6s ease-in-out;
-    }
+  .side-video-container:hover {
+    border-color: theme(colors.primary.DEFAULT/30);
+    box-shadow: 0 15px 30px theme(colors.primary.DEFAULT/15);
+    transform: scale(1.02) translateZ(20px);
+  }
+
+  .side-video-container .video-inner {
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .side-video-container:hover .video-inner {
+    transform: translateZ(10px);
+  }
+
+  .side-video-container:hover .game-video {
+    transform: scale(1.05);
+  }
+
+  .side-video-container .game-info-compact {
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .side-video-container:hover .game-info-compact {
+    transform: translateZ(15px);
   }
 
   .main-video-container:hover {
@@ -819,6 +849,18 @@ body {
 
   .depth-shadows {
     opacity: 0.2;
+    transform: none;
+  }
+
+  .side-video-container:hover {
+    transform: none;
+    box-shadow: none;
+    border-color: theme(colors.accent.DEFAULT/15);
+  }
+
+  .side-video-container:hover .video-inner,
+  .side-video-container:hover .game-info-compact,
+  .side-video-container:hover .game-video {
     transform: none;
   }
 }

@@ -154,61 +154,63 @@ export default function Hero() {
 
                 {/* Side videos in scrollable container on mobile */}
                 <div className="side-section flex-shrink-0 overflow-x-auto lg:overflow-visible">
-                  <div className="flex flex-row lg:flex-col gap-4 lg:gap-6 p-2 lg:p-0">
-                    {[
-                      {
-                        id: 1,
-                        title: "Destroyer Burger",
-                        genre: "Action",
-                        status: "Coming Soon",
-                        depth: 20,
-                      },
-                      {
-                        id: 2,
-                        title: "Mythargia",
-                        genre: "RPG",
-                        status: "In Development",
-                        depth: 40,
-                      },
-                      {
-                        id: 3,
-                        title: "Your game here?",
-                        genre: "Any Genre",
-                        status: "Join Us",
-                        depth: 60,
-                      },
-                    ].map((game, index) => (
-                      <div
-                        key={game.id}
-                        className="side-video-container hover-tilt animate-slide-in flex-shrink-0 w-[280px] lg:w-auto"
-                        style={
-                          {
-                            "--depth": `${game.depth}px`,
-                            "--index": index,
-                            animationDelay: `${0.2 + index * 0.1}s`,
-                          } as React.CSSProperties
-                        }
-                      >
-                        <div className="video-inner">
-                          <video
-                            src={`/video${game.id + 1}.mp4`}
-                            autoPlay
-                            muted
-                            loop
-                            playsInline
-                            preload="none"
-                            className="game-video"
-                          />
-                          <div className="depth-shadows" />
-                          <div className="content-overlay">
-                            <div className="game-info-compact">
-                              <span className="game-genre">{game.genre}</span>
-                              <h4 className="game-title">{game.title}</h4>
+                  <div className="side-section-wrapper">
+                    <div className="flex flex-row lg:flex-col gap-4 lg:gap-6 p-2 lg:p-0">
+                      {[
+                        {
+                          id: 1,
+                          title: "Destroyer Burger",
+                          genre: "Action",
+                          status: "Coming Soon",
+                          depth: 20,
+                        },
+                        {
+                          id: 2,
+                          title: "Mythargia",
+                          genre: "RPG",
+                          status: "In Development",
+                          depth: 40,
+                        },
+                        {
+                          id: 3,
+                          title: "Your game here?",
+                          genre: "Any Genre",
+                          status: "Join Us",
+                          depth: 60,
+                        },
+                      ].map((game, index) => (
+                        <div
+                          key={game.id}
+                          className="side-video-container hover-tilt animate-slide-in flex-shrink-0 w-[280px] lg:w-auto"
+                          style={
+                            {
+                              "--depth": `${game.depth}px`,
+                              "--index": index,
+                              animationDelay: `${0.2 + index * 0.1}s`,
+                            } as React.CSSProperties
+                          }
+                        >
+                          <div className="video-inner">
+                            <video
+                              src={`/video${game.id + 1}.mp4`}
+                              autoPlay
+                              muted
+                              loop
+                              playsInline
+                              preload="none"
+                              className="game-video"
+                            />
+                            <div className="depth-shadows" />
+                            <div className="content-overlay">
+                              <div className="game-info-compact">
+                                <span className="game-genre">{game.genre}</span>
+                                <h4 className="game-title">{game.title}</h4>
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
