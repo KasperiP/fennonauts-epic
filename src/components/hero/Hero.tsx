@@ -12,7 +12,7 @@ import { Starfield } from "./Starfield";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen bg-space-darker overflow-hidden">
+    <section className="relative min-h-[100dvh] bg-space-darker overflow-hidden">
       {/* Background layers */}
       <div className="absolute inset-0 bg-space-gradient opacity-90"></div>
       <div className="absolute inset-0 bg-aurora-glow"></div>
@@ -34,31 +34,30 @@ export default function Hero() {
       <Starfield />
 
       <div className="container-custom relative z-10">
-        {/* Change grid structure */}
-        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 min-h-screen items-center py-16 lg:py-0">
-          {/* Left Content */}
-          <div className="text-left space-y-6 lg:space-y-8 animate-fade-in-up content-wrapper max-lg:mb-12">
+        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-6 lg:gap-8 min-h-[100dvh] items-start lg:items-center py-24 lg:py-0">
+          {/* Left Content - adjusted spacing */}
+          <div className="text-left space-y-4 lg:space-y-8 animate-fade-in-up content-wrapper max-lg:mt-8">
             <div className="inline-block">
-              <div className="cosmic-badge">
+              <div className="cosmic-badge text-xs sm:text-sm">
                 <FaRocket className="text-xl mr-2" />
                 <span>LAUNCHING INDIE GAMES TO THE STARS</span>
               </div>
             </div>
 
-            <h1 className="font-grotesk text-7xl font-black leading-tight">
+            <h1 className="font-grotesk text-5xl sm:text-7xl font-black leading-tight">
               <span className="block cosmic-text">Fennonauts</span>
               <span className="cosmic-gradient text-4xl font-bold block mt-4">
                 Finnish Game Explorers
               </span>
             </h1>
 
-            <p className="text-xl text-white/80 max-w-xl leading-relaxed">
+            <p className="text-lg sm:text-xl text-white/80 max-w-xl leading-relaxed">
               Join our cosmic mission to launch Finland&apos;s most innovative
               indie games into the gaming universe. We&apos;re your mission
               control for discovering the next interstellar hit.
             </p>
 
-            <div className="flex gap-6 items-center pt-4">
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-start sm:items-center pt-4">
               <button className="cosmic-button group">
                 <span className="cosmic-glow"></span>
                 <span className="relative z-10 flex items-center">
@@ -72,17 +71,20 @@ export default function Hero() {
               </button>
             </div>
 
-            <div className="flex items-center gap-6 pt-8 cosmic-partners">
-              <span className="text-sm text-white/60">Ground Control:</span>
-              {[SiSteam, SiEpicgames, SiPlaystation, SiNintendoswitch].map(
-                (Icon, index) => (
-                  <Icon
-                    key={index}
-                    className="text-2xl hover:text-primary transition-all cursor-pointer transform hover:-translate-y-1"
-                  />
-                )
-              )}
-              <div className="ml-auto opacity-60 hover:opacity-100 transition-opacity">
+            <div className="space-y-6">
+              <div className="flex items-center gap-4 sm:gap-6 cosmic-partners">
+                <span className="text-sm text-white/60">Ground Control:</span>
+                {[SiSteam, SiEpicgames, SiPlaystation, SiNintendoswitch].map(
+                  (Icon, index) => (
+                    <Icon
+                      key={index}
+                      className="text-2xl hover:text-primary transition-all cursor-pointer transform hover:-translate-y-1"
+                    />
+                  )
+                )}
+              </div>
+
+              <div className="opacity-60 hover:opacity-100 transition-opacity">
                 <Image
                   src={playstationPartnersLogo}
                   alt="PlayStation Partners"
@@ -94,8 +96,8 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Video Grid - Now visible on mobile */}
-          <div className="relative w-full perspective-container will-change-transform">
+          {/* Video Grid - adjusted for mobile */}
+          <div className="relative w-full perspective-container will-change-transform max-lg:-mx-4 lg:mx-0">
             {/* Title repositioned for better mobile visibility */}
             <div className="absolute -top-8 lg:-top-16 left-0 right-0 text-center transform-gpu">
               <span className="preview-title text-base lg:text-lg">
@@ -196,8 +198,8 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce-slow">
+      {/* Adjust scroll indicator position */}
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 animate-bounce-slow hidden sm:block">
         <div className="w-6 h-10 rounded-full border-2 border-foreground/20 flex items-start justify-center p-2">
           <div className="w-1 h-2 bg-foreground/60 rounded-full"></div>
         </div>
