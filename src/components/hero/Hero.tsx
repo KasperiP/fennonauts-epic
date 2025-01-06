@@ -145,7 +145,9 @@ export default function Hero() {
                     <div className="content-overlay">
                       <div className="game-info floating-content">
                         <div className="game-status">Featured Release</div>
-                        <h3 className="game-name">Mauri Mursu's Odyssey</h3>
+                        <h3 className="game-name">
+                          Mauri Mursu&apos;s Odyssey
+                        </h3>
                         <p className="game-meta">Adventure · 2024</p>
                       </div>
                     </div>
