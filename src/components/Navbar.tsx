@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 import { FaRocket } from "react-icons/fa";
 
@@ -26,24 +27,24 @@ export default function Navbar() {
       <div className="container-custom">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <a
+          <Link
             href="/"
             className="flex items-center space-x-2 text-white hover:scale-105 transition-transform"
           >
             <FaRocket className="text-primary w-6 h-6" />
             <span className="font-grotesk font-bold text-lg">Fennonauts</span>
-          </a>
+          </Link>
 
           {/* Navigation Links */}
           <div className="hidden md:flex items-center space-x-8">
             {["Games", "About", "News", "Contact"].map((item) => (
-              <a
+              <Link
                 key={item}
                 href={`#${item.toLowerCase()}`}
                 className="text-white/80 hover:text-white transition-colors relative px-2 hover:-translate-y-0.5 inline-block"
               >
                 <span className="relative z-10">{item}</span>
-              </a>
+              </Link>
             ))}
           </div>
 
