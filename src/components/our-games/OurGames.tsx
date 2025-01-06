@@ -171,6 +171,7 @@ export default function OurGames() {
                           poster={media.thumbnail}
                           controls
                           className="mission-preview"
+                          playsInline // Add this for better mobile handling
                         />
                       ) : (
                         <Image
@@ -179,7 +180,9 @@ export default function OurGames() {
                           className="mission-preview"
                           fill
                           style={{ objectFit: "cover" }}
+                          sizes="(max-width: 768px) 100vw, 66vw" // Add responsive sizes
                           priority
+                          quality={90}
                         />
                       )}
                     </div>
