@@ -73,9 +73,9 @@ export default function AboutUs() {
             Meet The Fennonauts
           </h2>
           <p className="text-white/80 max-w-2xl mx-auto text-xl font-light leading-relaxed">
-            We're Finland's first indie game publisher focused on launching
-            local talents to global success. Our mission: Turn great Finnish
-            games into interstellar hits!
+            We&apos;re Finland&apos;s first indie game publisher focused on
+            launching local talents to global success. Our mission: Turn great
+            Finnish games into interstellar hits!
           </p>
         </div>
 
