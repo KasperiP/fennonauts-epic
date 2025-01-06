@@ -16,7 +16,6 @@ const DEVELOPMENT_STAGES = [
 const PLATFORMS = ["PC", "Console", "Mobile", "VR", "Other"] as const;
 
 export default function PitchUs() {
-  const [currentStep, setCurrentStep] = useState(0);
   const [formData, setFormData] = useState({
     name: "",
     role: "",
