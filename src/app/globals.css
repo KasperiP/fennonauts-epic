@@ -52,6 +52,7 @@ body {
     @apply relative inline-block;
     background: linear-gradient(180deg, #ffffff 0%, #f0f9ff 100%);
     -webkit-background-clip: text;
+    background-clip: text;
     color: transparent;
     text-shadow: 0 0 30px rgba(255, 255, 255, 0.8),
       0 0 60px rgba(56, 189, 248, 0.5);
@@ -153,127 +154,13 @@ body {
     animation: pulse-glow 3s ease-in-out infinite;
   }
 
-  .video-overlay {
-    @apply absolute inset-0 opacity-0 transition-opacity duration-500;
-    background: linear-gradient(
-      to top,
-      theme(colors.primary.DEFAULT/20),
-      theme(colors.accent.DEFAULT/10)
-    );
-  }
-
-  .status-badge {
-    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium
-           bg-primary/20 text-primary-light border border-primary/30
-           backdrop-blur-sm;
-    text-shadow: 0 0 10px theme(colors.primary.light/50);
-  }
-
-  .video-title {
-    @apply text-lg font-bold bg-clip-text text-transparent bg-gradient-to-r 
-           from-white to-primary-light;
-    text-shadow: 0 0 20px theme(colors.primary.DEFAULT/50);
-  }
-
-  .panel-content {
-    @apply absolute bottom-0 left-0 right-0 p-6 z-10;
-  }
-
   .game-title {
     @apply text-2xl font-bold mb-2;
     background: linear-gradient(to right, #fff, theme(colors.primary.light));
     -webkit-background-clip: text;
+    background-clip: text;
     color: transparent;
     text-shadow: 0 0 20px theme(colors.primary.DEFAULT/50);
-  }
-
-  .game-description {
-    @apply text-white/80 text-sm;
-  }
-
-  .game-badge {
-    @apply px-3 py-1 rounded-full text-sm font-medium
-           bg-gradient-to-r from-primary/20 to-accent/20
-           border border-white/20 backdrop-blur-sm;
-    box-shadow: 0 0 15px theme(colors.primary.DEFAULT/30);
-  }
-
-  .panel-effects {
-    @apply absolute inset-0 pointer-events-none opacity-0 
-           transition-opacity duration-300;
-  }
-
-  .main-screen {
-    @apply relative transform-gpu;
-    height: 100%;
-  }
-
-  .cinematic-showcase {
-    @apply grid gap-6 h-full;
-    grid-template-columns: 1.8fr 1fr;
-  }
-
-  .main-screen {
-    @apply h-full relative transform-gpu;
-    perspective: 2000px;
-  }
-
-  .hologram-video {
-    @apply absolute inset-0 w-full h-full object-cover;
-    filter: contrast(1.1) saturate(1.2);
-  }
-
-  .hologram-overlay {
-    @apply absolute inset-0 bg-gradient-to-t from-space-darker via-transparent;
-    backdrop-filter: blur(4px);
-  }
-
-  .hologram-content {
-    @apply absolute bottom-0 left-0 right-0 p-8 z-10;
-  }
-
-  .hologram-title {
-    @apply text-3xl font-bold mb-4;
-    background: linear-gradient(to right, #fff, theme(colors.primary.light));
-    -webkit-background-clip: text;
-    color: transparent;
-    text-shadow: 0 0 30px theme(colors.primary.DEFAULT/60);
-  }
-
-  .hologram-stats {
-    @apply flex gap-6;
-  }
-
-  .stat-item {
-    @apply flex flex-col;
-  }
-
-  .stat-value {
-    @apply text-2xl font-bold text-white;
-    text-shadow: 0 0 20px theme(colors.primary.DEFAULT/50);
-  }
-
-  .stat-label {
-    @apply text-sm text-white/60;
-  }
-
-  .scanner {
-    @apply absolute inset-0 pointer-events-none;
-    background: linear-gradient(
-      to bottom,
-      transparent,
-      theme(colors.primary.DEFAULT/10) 50%,
-      transparent
-    );
-    animation: scan 4s ease-in-out infinite;
-  }
-
-  .side-screens {
-    @apply flex flex-col gap-3;
-  }
-
-  .side-screen {
-    @apply relative flex-1;
   }
 
   .side-video {
@@ -281,28 +168,9 @@ body {
     filter: brightness(0.8) saturate(1.1);
   }
 
-  .side-overlay {
-    @apply absolute inset-0 bg-gradient-to-r from-space-darker via-transparent
-           opacity-0 transition-opacity duration-300;
-  }
-
-  .side-content {
-    @apply absolute bottom-0 left-0 p-4;
-  }
-
-  .game-category {
-    @apply inline-block px-2 py-1 rounded-md text-xs font-medium
-           bg-accent/20 text-white/90 backdrop-blur-sm
-           border border-accent/30 mb-2;
-  }
-
   .side-title {
     @apply text-lg font-bold text-white;
     text-shadow: 0 0 15px theme(colors.accent.DEFAULT/50);
-  }
-
-  .main-screen {
-    @apply relative h-full min-h-[400px];
   }
 
   .video-display {
@@ -541,43 +409,6 @@ body {
 
   .video-container-3d:hover::after {
     @apply opacity-100;
-    animation: none; /* Remove infinite animation */
-  }
-
-  .cosmic-shape {
-    @apply absolute rounded-3xl backdrop-blur-sm;
-    background: linear-gradient(
-      135deg,
-      rgba(96, 165, 250, 0.03) 0%,
-      rgba(139, 92, 246, 0.02) 100%
-    );
-    border: 1px solid theme(colors.primary.DEFAULT/10);
-    width: 450px;
-    height: 450px;
-  }
-
-  .cosmic-shape.primary {
-    background: linear-gradient(
-      135deg,
-      theme(colors.primary.DEFAULT/3) 0%,
-      transparent 100%
-    );
-    box-shadow: 0 0 80px -20px theme(colors.primary.DEFAULT/20),
-      inset 0 0 50px theme(colors.primary.DEFAULT/5);
-    opacity: 0.15;
-  }
-
-  .cosmic-shape.accent {
-    background: linear-gradient(
-      -45deg,
-      theme(colors.accent.DEFAULT/3) 0%,
-      transparent 100%
-    );
-    box-shadow: 0 0 60px -15px theme(colors.accent.DEFAULT/20),
-      inset 0 0 40px theme(colors.accent.DEFAULT/5);
-    opacity: 0.1;
-    width: 350px;
-    height: 350px;
   }
 
   .perspective-container {
@@ -613,7 +444,6 @@ body {
     box-shadow: 0 10px 30px theme(colors.primary.DEFAULT/10);
   }
 
-  /* Add subtle grid pattern */
   .main-video-container::before {
     content: "";
     @apply absolute inset-0 opacity-10;
@@ -640,7 +470,6 @@ body {
     box-shadow: 0 5px 15px theme(colors.accent.DEFAULT/10);
   }
 
-  /* Add same pattern to side containers */
   .side-video-container::before {
     content: "";
     @apply absolute inset-0 opacity-5;
@@ -657,7 +486,6 @@ body {
     background-position: -1px -1px;
   }
 
-  /* Update hover effects */
   .main-video-container:hover,
   .side-video-container:hover {
     box-shadow: 0 15px 40px theme(colors.primary.DEFAULT/15);
@@ -712,7 +540,6 @@ body {
     transform: translateZ(10px);
   }
 
-  /* Add a subtle scanline effect */
   .video-inner::after {
     content: "";
     @apply absolute inset-0 pointer-events-none opacity-10;
@@ -726,7 +553,6 @@ body {
     transform: translateZ(5px);
   }
 
-  /* Enhanced hover effects */
   .main-video-container:hover,
   .side-video-container:hover {
     .depth-shadows {
@@ -757,31 +583,6 @@ body {
 }
 
 @layer utilities {
-  .perspective-1000 {
-    perspective: 1000px;
-  }
-
-  .bg-gradient-gaming {
-    @apply bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_100%];
-  }
-
-  .bg-hexagon-pattern {
-    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l25.98 15v30L30 60 4.02 45V15z' fill-opacity='0.1' fill='%234F46E5'/%3E%3C/svg%3E");
-    background-size: 24px 24px;
-  }
-
-  @keyframes gradient-slide {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
-
   .animate-fade-in-up {
     animation: fadeInUp 0.8s ease-out forwards;
   }
@@ -831,72 +632,6 @@ body {
   }
 }
 
-/* Simplified particle system - keep only 5 particles */
-.particle {
-  @apply absolute rounded-full bg-primary/20 pointer-events-none;
-  animation: float-random 20s infinite linear;
-}
-
-.particle-1 {
-  --size: 12px;
-  --tx: 300px;
-  --ty: 200px;
-  width: var(--size);
-  height: var(--size);
-  top: 20vh;
-  left: 30vw;
-  opacity: 0.3;
-}
-.particle-2 {
-  --size: 15px;
-  --tx: -200px;
-  --ty: 400px;
-  width: var(--size);
-  height: var(--size);
-  top: 45vh;
-  left: 70vw;
-  opacity: 0.5;
-}
-.particle-3 {
-  --size: 10px;
-  --tx: 400px;
-  --ty: -300px;
-  width: var(--size);
-  height: var(--size);
-  top: 80vh;
-  left: 20vw;
-  opacity: 0.2;
-}
-.particle-4 {
-  --size: 18px;
-  --tx: -350px;
-  --ty: 250px;
-  width: var(--size);
-  height: var(--size);
-  top: 30vh;
-  left: 85vw;
-  opacity: 0.4;
-}
-.particle-5 {
-  --size: 14px;
-  --tx: 250px;
-  --ty: -200px;
-  width: var(--size);
-  height: var(--size);
-  top: 65vh;
-  left: 40vw;
-  opacity: 0.6;
-}
-
-@keyframes float-random {
-  0% {
-    transform: translate(0, 0);
-  }
-  100% {
-    transform: translate(var(--tx), var(--ty));
-  }
-}
-
 @keyframes twinkle {
   0%,
   100% {
@@ -918,65 +653,6 @@ body {
   }
   100% {
     background-position: 0% 50%;
-  }
-}
-
-@keyframes cosmic-ray {
-  0%,
-  100% {
-    transform: translateY(-100%) rotate(45deg);
-    opacity: 0;
-  }
-  50% {
-    transform: translateY(100%) rotate(45deg);
-    opacity: 0.5;
-  }
-}
-
-@keyframes star-pulse {
-  0%,
-  100% {
-    transform: scale(1);
-    opacity: 0.8;
-  }
-  50% {
-    transform: scale(1.2);
-    opacity: 1;
-  }
-}
-
-@keyframes orbit {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes star-zoom {
-  0% {
-    transform: translateZ(0);
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateZ(400px);
-    opacity: 0;
-  }
-}
-
-@keyframes pulse {
-  0%,
-  100% {
-    opacity: 0.5;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.5);
   }
 }
 
