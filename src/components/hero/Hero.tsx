@@ -98,15 +98,25 @@ export default function Hero() {
           </div>
 
           {/* Video Grid - adjusted for mobile */}
-          <div className="relative w-full perspective-container will-change-transform lg:mx-0 mt-28">
-            {/* Move title closer to grid and match perspective */}
-            <div className="absolute -top-20 lg:-top-24 left-0 right-0 z-30">
+          <div className="relative w-full perspective-container will-change-transform lg:mx-0 mt-16 max-lg:mt-28">
+            {/* Title area redesign - moved closer to content */}
+            <div className="absolute -top-12 lg:-top-24 left-0 right-0 z-30 max-lg:-top-24">
               <div className="floating-title">
-                <div className="inline-flex cosmic-badge mb-2 py-1 px-2.5 opacity-75 title-card text-[0.7rem] tracking-wider">
-                  <span>✦ DISCOVER ✦</span>
-                </div>
-                <div className="title-card-main">
-                  <span className="preview-title">Through the Fennoverse</span>
+                <div className="space-y-2 text-center transform-gpu">
+                  <div className="inline-flex items-center space-x-3 transform-gpu">
+                    <div className="h-[1px] w-8 bg-gradient-to-r from-transparent via-primary/50 to-transparent"></div>
+                    <div className="cosmic-badge py-1 px-3 text-[0.65rem] tracking-widest">
+                      <FaRocket className="mr-1.5 text-xs" />
+                      <span>EXPLORE THE GAMES</span>
+                    </div>
+                    <div className="h-[1px] w-8 bg-gradient-to-r from-transparent via-primary/50 to-transparent"></div>
+                  </div>
+
+                  <div className="title-card-main group transform-gpu">
+                    <span className="fennoverse-title">
+                      Through the Fennoverse
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>

@@ -48,6 +48,11 @@ body {
            shadow-lg transition-all duration-500 hover:bg-space-dark/30;
   }
 
+  .cosmic-badge-small {
+    @apply bg-space-dark/30 backdrop-blur-sm rounded-full
+           border border-white/[0.04];
+  }
+
   .cosmic-text {
     @apply relative inline-block;
     background: linear-gradient(180deg, #f8fafc 20%, #cbd5e1 100%);
@@ -205,8 +210,7 @@ body {
 
   .video-container:hover .game-video,
   .video-container-3d:hover .game-video,
-  .main-video-container:hover .game-video,
-  .side-video-container:hover .game-video {
+  .main-video-container:hover .game-video {
     filter: brightness(1) contrast(1) saturate(1);
   }
 
@@ -516,9 +520,8 @@ body {
   }
 
   .side-video-container {
-    @apply relative rounded-xl overflow-hidden;
+    @apply relative rounded-xl overflow-hidden transition-all duration-300;
     transform-style: preserve-3d;
-    transform: translateZ(calc(var(--depth) * -1));
     height: 180px;
     @screen lg {
       height: calc((600px - 2rem) / 3);
@@ -545,20 +548,17 @@ body {
     background-position: -1px -1px;
   }
 
-  .main-video-container:hover,
-  .side-video-container:hover {
+  .main-video-container:hover {
     box-shadow: 0 3px 8px theme(colors.primary.DEFAULT/5),
       0 6px 16px theme(colors.space.darker/15);
     transform: scale(1.01) translateZ(5px);
   }
 
-  .main-video-container:hover,
-  .side-video-container:hover {
+  .main-video-container:hover {
     box-shadow: 0 15px 40px theme(colors.primary.DEFAULT/15);
   }
 
-  .main-video-container:hover::before,
-  .side-video-container:hover::before {
+  .main-video-container:hover::before {
     @apply opacity-15;
   }
 
@@ -643,8 +643,7 @@ body {
     transform: translateZ(5px);
   }
 
-  .main-video-container:hover,
-  .side-video-container:hover {
+  .main-video-container:hover {
     .depth-shadows {
       background: linear-gradient(
         to bottom,
@@ -703,66 +702,20 @@ body {
     transform-style: preserve-3d;
     transform: translateZ(-20px);
     @screen lg {
-      transform: rotateX(5deg) rotateY(-10deg) translateZ(-20px);
+      transform: rotateX(10deg) rotateY(-10deg) translateZ(-20px);
     }
   }
 
-  .title-card {
-    @apply backdrop-blur-xl bg-space-darker/70 border-white/5 shadow-xl;
-    transform-style: preserve-3d;
-    transform: translateZ(10px);
-  }
-
-  .title-card-main {
-    @apply relative inline-block px-6 py-2.5 rounded-xl border border-white/10
-           backdrop-blur-xl bg-space-darker/70;
-    transform-style: preserve-3d;
-    transform: translateZ(15px);
-
-    &::before {
-      content: "";
-      @apply absolute inset-0 rounded-xl opacity-20;
-      background: linear-gradient(
-        45deg,
-        theme(colors.primary.DEFAULT/20),
-        theme(colors.accent.DEFAULT/20)
-      );
-      mix-blend-mode: overlay;
-    }
-  }
-
-  .preview-title {
-    @apply text-base lg:text-lg font-bold tracking-wide uppercase;
+  .fennoverse-title {
+    @apply text-lg lg:text-xl font-medium tracking-wide;
     background: linear-gradient(
-      135deg,
-      #ffffff 0%,
-      theme(colors.primary.light) 50%,
-      #ffffff 100%
+      180deg,
+      rgba(255, 255, 255, 0.95) 0%,
+      rgba(255, 255, 255, 0.8) 100%
     );
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    text-shadow: 0 0 25px theme(colors.primary.DEFAULT/80);
-  }
-
-  @keyframes float-title {
-    0%,
-    100% {
-      transform: rotateX(5deg) rotateY(-10deg) translateZ(-20px);
-    }
-    50% {
-      transform: rotateX(5deg) rotateY(-10deg) translateZ(-15px);
-    }
-  }
-
-  @keyframes float-title {
-    0%,
-    100% {
-      transform: translateZ(40px) rotateX(10deg);
-    }
-    50% {
-      transform: translateZ(50px) rotateX(8deg);
-    }
   }
 }
 
@@ -833,21 +786,18 @@ body {
     }
   }
 
-  .main-video-container:hover,
-  .side-video-container:hover {
+  .main-video-container:hover {
     box-shadow: none;
     transform: none;
   }
 
-  .main-video-container:hover::before,
-  .side-video-container:hover::before {
+  .main-video-container:hover::before {
     @apply opacity-5;
   }
 
   .video-container:hover .game-video,
   .video-container-3d:hover .game-video,
-  .main-video-container:hover .game-video,
-  .side-video-container:hover .game-video {
+  .main-video-container:hover .game-video {
     filter: brightness(0.85) contrast(1.05) saturate(0.9);
     transform: none;
   }
@@ -1009,20 +959,6 @@ body {
   100% {
     transform: rotate(360deg) scale(1);
     filter: blur(1px) brightness(1);
-  }
-}
-
-@keyframes title-glow {
-  0%,
-  100% {
-    opacity: 0.9;
-    text-shadow: 0 0 15px theme(colors.primary.DEFAULT/70),
-      0 0 30px theme(colors.primary.DEFAULT/40);
-  }
-  50% {
-    opacity: 1;
-    text-shadow: 0 0 20px theme(colors.primary.DEFAULT/80),
-      0 0 40px theme(colors.primary.DEFAULT/50);
   }
 }
 
