@@ -26,7 +26,7 @@ export default function Hero() {
           style={{
             left: `${i * 15}%`,
             animationDelay: `${i * 0.5}s`,
-            willChange: 'transform, opacity'
+            willChange: "transform, opacity",
           }}
         />
       ))}
@@ -34,9 +34,10 @@ export default function Hero() {
       <Starfield />
 
       <div className="container-custom relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 h-screen items-center">
+        {/* Change grid structure */}
+        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 min-h-screen items-center py-16 lg:py-0">
           {/* Left Content */}
-          <div className="text-left space-y-8 animate-fade-in-up content-wrapper">
+          <div className="text-left space-y-6 lg:space-y-8 animate-fade-in-up content-wrapper max-lg:mb-12">
             <div className="inline-block">
               <div className="cosmic-badge">
                 <FaRocket className="text-xl mr-2" />
@@ -93,23 +94,24 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Advanced 3D Video Grid */}
-          <div className="relative hidden lg:block perspective-container will-change-transform">
-            {/* Static tilted preview title */}
-            <div
-              className="absolute -top-12 left-0 right-0 text-center transform-gpu"
-              style={{
-                transform: "rotateX(5deg) rotateY(-10deg)",
-                transformStyle: "preserve-3d",
-              }}
-            >
-              <span className="cosmic-gradient text-sm font-medium inline-block">
-                Wormhole Preview to the Future
+          {/* Video Grid - Now visible on mobile */}
+          <div className="relative w-full perspective-container will-change-transform">
+            {/* Title repositioned for better mobile visibility */}
+            <div className="absolute -top-8 lg:-top-16 left-0 right-0 text-center transform-gpu">
+              <span className="preview-title text-base lg:text-lg">
+                Through the Fennoverse
               </span>
             </div>
 
-            <div className="floating-grid animate-float">
+            <div
+              className="floating-grid animate-float"
+              style={{
+                animationDuration: "15s",
+                willChange: "transform",
+              }}
+            >
               <div className="grid-3d-container">
+                {/* Main featured video */}
                 <div className="featured-section">
                   <div className="main-video-container hover-tilt">
                     <video
@@ -132,58 +134,61 @@ export default function Hero() {
                   </div>
                 </div>
 
-                <div className="side-section">
-                  {[
-                    {
-                      id: 1,
-                      title: "Upcoming Release",
-                      genre: "Strategy",
-                      depth: 20,
-                    },
-                    {
-                      id: 2,
-                      title: "Popular Now",
-                      genre: "Adventure",
-                      depth: 40,
-                    },
-                    {
-                      id: 3,
-                      title: "New Addition",
-                      genre: "Puzzle",
-                      depth: 60,
-                    },
-                  ].map((game, index) => (
-                    <div
-                      key={game.id}
-                      className={`side-video-container hover-tilt animate-slide-in`}
-                      style={
-                        {
-                          "--depth": `${game.depth}px`,
-                          "--index": index,
-                          animationDelay: `${0.2 + index * 0.1}s`,
-                        } as React.CSSProperties
-                      }
-                    >
-                      <div className="video-inner">
-                        <video
-                          src={`/video${game.id + 1}.mp4`}
-                          autoPlay
-                          muted
-                          loop
-                          playsInline
-                          preload="none"
-                          className="game-video"
-                        />
-                        <div className="depth-shadows" />
-                        <div className="content-overlay">
-                          <div className="game-info-compact">
-                            <span className="game-genre">{game.genre}</span>
-                            <h4 className="game-title">{game.title}</h4>
+                {/* Side videos in scrollable container on mobile */}
+                <div className="side-section flex-shrink-0 overflow-x-auto lg:overflow-visible">
+                  <div className="flex flex-row lg:flex-col gap-4 lg:gap-6 p-2 lg:p-0">
+                    {[
+                      {
+                        id: 1,
+                        title: "Upcoming Release",
+                        genre: "Strategy",
+                        depth: 20,
+                      },
+                      {
+                        id: 2,
+                        title: "Popular Now",
+                        genre: "Adventure",
+                        depth: 40,
+                      },
+                      {
+                        id: 3,
+                        title: "New Addition",
+                        genre: "Puzzle",
+                        depth: 60,
+                      },
+                    ].map((game, index) => (
+                      <div
+                        key={game.id}
+                        className="side-video-container hover-tilt animate-slide-in flex-shrink-0 w-[280px] lg:w-auto"
+                        style={
+                          {
+                            "--depth": `${game.depth}px`,
+                            "--index": index,
+                            animationDelay: `${0.2 + index * 0.1}s`,
+                          } as React.CSSProperties
+                        }
+                      >
+                        <div className="video-inner">
+                          <video
+                            src={`/video${game.id + 1}.mp4`}
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                            preload="none"
+                            className="game-video"
+                          />
+                          <div className="depth-shadows" />
+                          <div className="content-overlay">
+                            <div className="game-info-compact">
+                              <span className="game-genre">{game.genre}</span>
+                              <h4 className="game-title">{game.title}</h4>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
