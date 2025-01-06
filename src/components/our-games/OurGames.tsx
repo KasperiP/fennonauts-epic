@@ -30,16 +30,24 @@ const games = [
     completion: 95,
     platforms: ["steam", "epic", "playstation"],
     features: ["Cosmic Raids", "Space Settlements", "Norse Magic"],
-    image: gameImageTemplate,
-    screenshots: Array(4).fill(gameImageTemplate),
+    image: gameImageTemplate.src,
+    screenshots: Array(4).fill(gameImageTemplate.src),
     featured: true,
     media: [
-      { type: "image", url: gameImageTemplate, alt: "Gameplay screenshot 1" },
-      { type: "image", url: gameImageTemplate, alt: "Gameplay screenshot 2" },
+      {
+        type: "image",
+        url: gameImageTemplate.src,
+        alt: "Gameplay screenshot 1",
+      },
+      {
+        type: "image",
+        url: gameImageTemplate.src,
+        alt: "Gameplay screenshot 2",
+      },
       {
         type: "video",
         url: "/videos/trailer.mp4",
-        thumbnail: gameImageTemplate,
+        thumbnail: gameImageTemplate.src,
       },
     ],
   },
@@ -50,10 +58,14 @@ const games = [
     description: "The ultimate Finnish relaxation... in space!",
     platforms: ["steam", "switch"],
     releaseDate: "Q3 2024",
-    image: gameImageTemplate,
+    image: gameImageTemplate.src,
     media: [
-      { type: "image", url: gameImageTemplate, alt: "Sauna in space concept" },
-      { type: "image", url: gameImageTemplate, alt: "Zero gravity löyly" },
+      {
+        type: "image",
+        url: gameImageTemplate.src,
+        alt: "Sauna in space concept",
+      },
+      { type: "image", url: gameImageTemplate.src, alt: "Zero gravity löyly" },
     ],
     completion: 65,
     tagline: "Steam meets Space... literally!",
@@ -66,10 +78,14 @@ const games = [
     description: "Musical roguelike with Finnish folk instruments",
     platforms: ["steam", "playstation", "switch"],
     releaseDate: "Q4 2024",
-    image: gameImageTemplate,
+    image: gameImageTemplate.src,
     media: [
-      { type: "image", url: gameImageTemplate, alt: "Quantum realm concert" },
-      { type: "image", url: gameImageTemplate, alt: "Musical combat" },
+      {
+        type: "image",
+        url: gameImageTemplate.src,
+        alt: "Quantum realm concert",
+      },
+      { type: "image", url: gameImageTemplate.src, alt: "Musical combat" },
     ],
     completion: 45,
     tagline: "Folk Music Meets Quantum Physics",
@@ -82,16 +98,20 @@ const games = [
     description: "Anti-gravity racing through Finnish landscapes",
     platforms: ["steam", "playstation"],
     releaseDate: "Q1 2024",
-    image: gameImageTemplate,
+    image: gameImageTemplate.src,
     featured: true,
-    screenshots: Array(4).fill(gameImageTemplate), // Replace with actual screenshots
+    screenshots: Array(4).fill(gameImageTemplate.src), // Replace with actual screenshots
     media: [
-      { type: "image", url: gameImageTemplate, alt: "Aurora racing track" },
-      { type: "image", url: gameImageTemplate, alt: "Anti-gravity vehicle" },
+      { type: "image", url: gameImageTemplate.src, alt: "Aurora racing track" },
+      {
+        type: "image",
+        url: gameImageTemplate.src,
+        alt: "Anti-gravity vehicle",
+      },
       {
         type: "video",
         url: "/videos/trailer.mp4",
-        thumbnail: gameImageTemplate,
+        thumbnail: gameImageTemplate.src,
       },
     ],
     completion: 85,
@@ -168,7 +188,9 @@ export default function OurGames() {
                       {media.type === "video" ? (
                         <video
                           src={media.url}
-                          poster={media.thumbnail}
+                          poster={
+                            "thumbnail" in media ? media.thumbnail : undefined
+                          }
                           controls
                           className="mission-preview"
                           playsInline // Add this for better mobile handling
@@ -176,7 +198,7 @@ export default function OurGames() {
                       ) : (
                         <Image
                           src={media.url}
-                          alt={media.alt}
+                          alt={media.alt || "Gameplay screenshot"}
                           className="mission-preview"
                           fill
                           style={{ objectFit: "cover" }}
@@ -218,7 +240,10 @@ export default function OurGames() {
 
                       <div className="platform-dock">
                         {activeGame.platforms.map((platform) => {
-                          const Icon = platformIcons[platform];
+                          const Icon =
+                            platformIcons[
+                              platform as keyof typeof platformIcons
+                            ];
                           return (
                             <div key={platform} className="dock-item text-sm">
                               <Icon />
