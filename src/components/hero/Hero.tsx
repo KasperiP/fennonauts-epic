@@ -129,8 +129,8 @@ export default function Hero() {
                     <div className="content-overlay">
                       <div className="game-info floating-content">
                         <div className="game-status">Featured Release</div>
-                        <h3 className="game-name">Game Title</h3>
-                        <p className="game-meta">Action RPG · 2024</p>
+                        <h3 className="game-name">Mauri Mursu's Odyssey</h3>
+                        <p className="game-meta">Adventure · 2024</p>
                       </div>
                     </div>
                   </div>
@@ -142,20 +142,23 @@ export default function Hero() {
                     {[
                       {
                         id: 1,
-                        title: "Upcoming Release",
-                        genre: "Strategy",
+                        title: "Destroyer Burger",
+                        genre: "Action",
+                        status: "Coming Soon",
                         depth: 20,
                       },
                       {
                         id: 2,
-                        title: "Popular Now",
-                        genre: "Adventure",
+                        title: "Mythargia",
+                        genre: "RPG",
+                        status: "In Development",
                         depth: 40,
                       },
                       {
                         id: 3,
-                        title: "New Addition",
-                        genre: "Puzzle",
+                        title: "Your game here?",
+                        genre: "Any Genre",
+                        status: "Join Us",
                         depth: 60,
                       },
                     ].map((game, index) => (
