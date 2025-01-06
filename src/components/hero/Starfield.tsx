@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useMemo, useRef } from "react";
+import { useMemo, useRef } from "react";
 
 export const Starfield = () => {
   const starFieldRef = useRef(
@@ -14,35 +14,6 @@ export const Starfield = () => {
       []
     )
   );
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      const x = (e.clientX / window.innerWidth) * 100;
-      const y = (e.clientY / window.innerHeight) * 100;
-
-      document.documentElement.style.setProperty("--mouse-x", `${x}%`);
-      document.documentElement.style.setProperty("--mouse-y", `${y}%`);
-
-      // Smooth star movement
-      starFieldRef.current = starFieldRef.current.map((star) => ({
-        ...star,
-        x: (star.x + e.movementX * star.speed + 100) % 100,
-        y: (star.y + e.movementY * star.speed + 100) % 100,
-      }));
-
-      // Update star positions in DOM
-      const starElements = document.querySelectorAll(".star");
-      starElements.forEach((el, i) => {
-        const star = starFieldRef.current[i];
-        (
-          el as HTMLElement
-        ).style.transform = `translate(${star.x}%, ${star.y}%)`;
-      });
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
 
   return (
     <div className="star-field">
