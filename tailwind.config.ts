@@ -12,22 +12,22 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
         primary: {
-          DEFAULT: "#60A5FA", // Bright stellar blue
-          dark: "#3B82F6",
-          light: "#93C5FD",
+          DEFAULT: "#2563eb", // Softer blue
+          dark: "#1d4ed8",
+          light: "#60a5fa",
         },
         accent: {
-          DEFAULT: "#8B5CF6", // Deep cosmic purple
-          dark: "#7C3AED",
-          light: "#A78BFA",
+          DEFAULT: "#6d28d9", // Gentle purple
+          dark: "#5b21b6",
+          light: "#8b5cf6",
         },
         space: {
-          darker: "#030711", // True space black
-          dark: "#0F172A", // Deep space
-          nebula: "#1E1B4B",
-          stars: "#F8FAFC",
-          aurora: "#38BDF8",
-          cosmic: "#4F46E5",
+          darker: "#030712", // Rich space black
+          dark: "#0f172a",
+          nebula: "#1e293b",
+          stars: "#e2e8f0",
+          aurora: "#3b82f6",
+          cosmic: "#6366f1",
         },
         surface: {
           DEFAULT: "#FFFFFF",
@@ -39,9 +39,9 @@ export default {
         "space-gradient": `
           radial-gradient(
             circle at center,
-            rgba(96, 165, 250, 0.08) 0%,
-            rgba(139, 92, 246, 0.05) 35%,
-            rgba(3, 7, 17, 1) 80%
+            rgba(37, 99, 235, 0.05) 0%,
+            rgba(109, 40, 217, 0.03) 35%,
+            rgba(3, 7, 18, 1) 85%
           )
         `,
         "nebula-pattern": `

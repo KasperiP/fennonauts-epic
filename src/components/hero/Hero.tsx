@@ -14,18 +14,19 @@ export default function Hero() {
   return (
     <section className="relative min-h-[100dvh] bg-space-darker overflow-hidden">
       {/* Background layers */}
-      <div className="absolute inset-0 bg-space-gradient opacity-90"></div>
-      <div className="absolute inset-0 bg-aurora-glow"></div>
+      <div className="absolute inset-0 bg-space-gradient opacity-100"></div>
+      <div className="absolute inset-0 bg-aurora-glow opacity-50"></div>
       <div className="nebula-effect"></div>
 
-      {/* Aurora beams */}
-      {[...Array(8)].map((_, i) => (
+      {/* Aurora beams - reduced quantity and opacity */}
+      {[...Array(4)].map((_, i) => (
         <div
           key={i}
           className="aurora-beam"
           style={{
-            left: `${i * 15}%`,
-            animationDelay: `${i * 0.5}s`,
+            left: `${i * 28 + 10}%`,
+            animationDelay: `${i * 1.5}s`,
+            opacity: "0.12",
             willChange: "transform, opacity",
           }}
         />
@@ -97,12 +98,17 @@ export default function Hero() {
           </div>
 
           {/* Video Grid - adjusted for mobile */}
-          <div className="relative w-full perspective-container will-change-transform lg:mx-0 max-lg:mt-16">
-            {/* Title repositioned for better mobile visibility */}
-            <div className="absolute -top-8 lg:-top-16 left-0 right-0 text-center transform-gpu max-lg:-top-14 z-30">
-              <span className="preview-title text-base lg:text-lg">
-                Through the Fennoverse
-              </span>
+          <div className="relative w-full perspective-container will-change-transform lg:mx-0 mt-28">
+            {/* Move title closer to grid and match perspective */}
+            <div className="absolute -top-20 lg:-top-24 left-0 right-0 z-30">
+              <div className="floating-title">
+                <div className="inline-flex cosmic-badge mb-2 py-1 px-2.5 opacity-75 title-card text-[0.7rem] tracking-wider">
+                  <span>✦ DISCOVER ✦</span>
+                </div>
+                <div className="title-card-main">
+                  <span className="preview-title">Through the Fennoverse</span>
+                </div>
+              </div>
             </div>
 
             <div
