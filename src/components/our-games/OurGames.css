@@ -1,0 +1,355 @@
+.our-games {
+  .space-station-grid {
+    @apply absolute inset-0 opacity-10;
+    background-image: linear-gradient(
+        to right,
+        theme(colors.primary.DEFAULT/10) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        to bottom,
+        theme(colors.primary.DEFAULT/10) 1px,
+        transparent 1px
+      );
+    background-size: 40px 40px;
+    mask-image: radial-gradient(circle at center, black 30%, transparent 70%);
+  }
+
+  .mission-control-grid {
+    @apply absolute inset-0 opacity-10;
+    background-image: radial-gradient(
+        circle at center,
+        theme(colors.primary.DEFAULT/20) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        to right,
+        theme(colors.primary.DEFAULT/10) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        to bottom,
+        theme(colors.primary.DEFAULT/10) 1px,
+        transparent 1px
+      );
+    background-size: 100px 100px, 20px 20px, 20px 20px;
+    mask-image: radial-gradient(circle at center, black 30%, transparent 70%);
+  }
+
+  .mission-badge {
+    @apply mx-auto w-fit flex items-center gap-3 px-6 py-3 rounded-full
+               bg-space-dark/30 border border-primary/20 backdrop-blur-xl;
+  }
+
+  .launch-stats {
+    @apply flex justify-center items-center gap-8 mt-12;
+  }
+
+  .stat-item {
+    @apply flex flex-col items-center;
+  }
+
+  .stat-value {
+    @apply text-4xl font-bold bg-gradient-to-r from-white to-primary-light
+               bg-clip-text text-transparent;
+  }
+
+  .stat-label {
+    @apply text-sm text-white/60 mt-2;
+  }
+
+  .stat-divider {
+    @apply w-px h-12 bg-primary/20;
+  }
+
+  .mission-control-layout {
+    @apply grid gap-4 md:gap-8;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+
+    @screen md {
+      grid-template-columns: 2fr 1fr;
+      grid-template-rows: auto;
+    }
+  }
+
+  .featured-mission {
+    @apply relative rounded-2xl overflow-hidden;
+    min-height: 300px;
+  }
+
+  .mission-viewport {
+    @apply relative h-full;
+    transform-style: preserve-3d;
+    min-height: inherit;
+  }
+
+  .viewport-frame {
+    @apply absolute inset-0 rounded-2xl overflow-hidden
+               border border-primary/20 bg-space-dark;
+    transform: rotateX(1deg) rotateY(-0.5deg);
+
+    @screen md {
+      transform: rotateX(2deg) rotateY(-1deg);
+    }
+  }
+
+  .media-carousel {
+    @apply relative w-full;
+    aspect-ratio: 16/9;
+  }
+
+  .media-item {
+    @apply absolute inset-0 opacity-0 transition-all duration-500;
+    aspect-ratio: 16/9;
+  }
+
+  .media-item.active {
+    @apply opacity-100;
+  }
+
+  .mission-preview {
+    @apply w-full h-full object-cover;
+  }
+
+  .media-controls {
+    @apply inline-flex items-center gap-3 px-3 py-2 mt-3 rounded-lg
+               bg-space-dark/30 backdrop-blur-sm border border-primary/10;
+  }
+
+  .media-nav-button {
+    @apply p-1.5 rounded-md bg-transparent border-none
+               hover:bg-primary/10 transition-all duration-300
+               text-white/60 hover:text-white text-sm;
+  }
+
+  .media-indicators {
+    @apply flex gap-2;
+  }
+
+  .indicator-dot {
+    @apply w-1.5 h-1.5 rounded-full bg-white/20 hover:bg-white/40
+               transition-all duration-300;
+  }
+
+  .indicator-dot.active {
+    @apply bg-primary;
+    box-shadow: 0 0 10px theme(colors.primary.DEFAULT/50);
+  }
+
+  .mission-overlay {
+    @apply absolute inset-0 flex flex-col justify-end z-20 p-3 md:p-6;
+    background: linear-gradient(
+      to top,
+      theme(colors.space.darker) 0%,
+      theme(colors.space.darker/95) 20%,
+      theme(colors.space.darker/60) 40%,
+      transparent 100%
+    );
+  }
+
+  .mission-status {
+    @apply absolute top-2 md:top-4 left-0 right-0 flex justify-between items-start z-30 px-3 md:px-6;
+  }
+
+  .mission-brief {
+    @apply space-y-2;
+  }
+
+  .mission-title {
+    @apply text-4xl font-bold;
+    background: linear-gradient(135deg, #fff 30%, theme(colors.primary.light));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 30px theme(colors.primary.DEFAULT/30);
+  }
+
+  .mission-tagline {
+    @apply text-xl text-white/90;
+  }
+
+  .mission-details {
+    @apply flex items-center gap-6 mt-4;
+  }
+
+  .progress-track {
+    @apply relative h-2 bg-space-dark/50 rounded-full overflow-hidden
+               border border-primary/10;
+  }
+
+  .progress-bar {
+    @apply absolute inset-y-0 left-0 bg-gradient-to-r from-primary to-accent
+               transition-all duration-500;
+  }
+
+  .progress-label {
+    @apply block text-sm text-white/60 mt-2 font-mono;
+  }
+
+  .platform-dock {
+    @apply flex gap-3 relative z-30;
+  }
+
+  .dock-item {
+    @apply p-2 rounded-lg bg-space-dark/50 border border-primary/10
+               hover:bg-primary/10 hover:border-primary/30 transition-all duration-300
+               text-white/60 hover:text-white;
+  }
+
+  .mission-timeline {
+    @apply flex flex-col gap-4 p-4 bg-space-dark/30 rounded-2xl backdrop-blur-sm
+               border border-primary/10;
+    overflow-y: auto;
+  }
+
+  .timeline-mission {
+    @apply relative flex gap-4 p-4 cursor-pointer transition-all duration-300
+               rounded-xl hover:bg-primary/5;
+  }
+
+  .timeline-mission.active {
+    @apply bg-primary/10;
+  }
+
+  .mission-marker {
+    @apply w-3 h-3 mt-2 rounded-full bg-primary/30 border border-primary/50
+               transition-all duration-300;
+    box-shadow: 0 0 10px theme(colors.primary.DEFAULT/30);
+  }
+
+  .timeline-mission.active .mission-marker {
+    @apply bg-primary border-primary;
+    box-shadow: 0 0 15px theme(colors.primary.DEFAULT/50);
+  }
+
+  .mission-card {
+    @apply flex-1;
+  }
+
+  .card-content h4 {
+    @apply text-lg font-bold mb-1;
+    background: linear-gradient(135deg, #fff 30%, theme(colors.primary.light));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .mission-meta {
+    @apply flex items-center gap-3 text-sm text-white/60;
+  }
+
+  .launch-date {
+    @apply font-mono;
+  }
+
+  .mission-type {
+    @apply px-2 py-0.5 rounded-full bg-primary/10 text-primary/90
+               border border-primary/20;
+  }
+
+  @keyframes pulse {
+    0%,
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.5;
+      transform: scale(0.8);
+    }
+  }
+
+  /* Timeline Scrollbar */
+  .mission-timeline::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .mission-timeline::-webkit-scrollbar-track {
+    @apply bg-space-dark/30 rounded-full;
+  }
+
+  .mission-timeline::-webkit-scrollbar-thumb {
+    @apply bg-primary/30 rounded-full;
+    border: 1px solid theme(colors.primary.DEFAULT/20);
+  }
+
+  .timeline-scroll {
+    @apply h-full overflow-y-auto pr-2;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .status-indicator {
+    @apply flex items-center gap-2 px-3 py-1.5 rounded-full text-sm
+               bg-space-dark/80 backdrop-blur-sm border border-primary/20
+               text-white font-medium;
+  }
+
+  .pulse-dot {
+    @apply w-2 h-2 rounded-full bg-primary;
+    animation: pulse 2s infinite;
+  }
+
+  .status-indicator .pulse-dot {
+    box-shadow: 0 0 8px theme(colors.primary.DEFAULT);
+  }
+
+  /* Mobile-specific adjustments */
+  @screen sm {
+    .mission-badge {
+      @apply text-xs px-3 py-1.5;
+    }
+
+    .mission-brief {
+      @apply space-y-1.5;
+    }
+
+    .mission-details {
+      @apply gap-3 mt-2;
+    }
+
+    .platform-dock {
+      @apply gap-1.5;
+    }
+
+    .dock-item {
+      @apply p-1 text-xs;
+    }
+
+    .mission-timeline {
+      @apply p-2;
+    }
+
+    .timeline-mission {
+      @apply p-2;
+    }
+
+    .mission-marker {
+      @apply w-2 h-2 mt-1.5;
+    }
+
+    .card-content h4 {
+      @apply text-base mb-0.5;
+    }
+
+    .mission-meta {
+      @apply gap-2 text-xs;
+    }
+
+    .progress-track {
+      @apply h-1.5;
+    }
+
+    .progress-label {
+      @apply text-xs mt-1;
+    }
+
+    .status-indicator {
+      @apply text-xs px-2 py-1;
+    }
+
+    .pulse-dot {
+      @apply w-1.5 h-1.5;
+    }
+  }
+}

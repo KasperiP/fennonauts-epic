@@ -1,0 +1,492 @@
+.floating-particle {
+  @apply absolute text-lg transform-gpu;
+  animation: float-particle 8s ease-in-out infinite;
+}
+
+.mission-cards-container {
+  @apply relative z-10;
+  perspective: 2000px;
+}
+
+.mission-cards-grid {
+  @apply grid gap-8 relative;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.mission-cards-hex-grid {
+  @apply grid gap-8 relative mx-auto max-w-6xl;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-auto-rows: 1fr;
+}
+
+.mission-card-wrapper {
+  @apply opacity-0;
+  animation: fadeInSlideUp 0.8s ease-out forwards;
+}
+
+.mission-card {
+  @apply relative transform-gpu transition-all duration-500;
+  transform-style: preserve-3d;
+}
+
+.mission-card-inner {
+  @apply relative rounded-3xl overflow-hidden h-full transition-all duration-500;
+  background: linear-gradient(
+    165deg,
+    rgba(255, 255, 255, 0.04) 0%,
+    rgba(255, 255, 255, 0.02) 100%
+  );
+  transform-style: preserve-3d;
+  box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+}
+
+.mission-card-header {
+  @apply relative flex items-center justify-between mb-6;
+}
+
+.icon-portal {
+  @apply relative w-20 h-20;
+}
+
+.icon-orbit {
+  @apply absolute inset-0;
+  transform-style: preserve-3d;
+}
+
+.orbit-path {
+  @apply absolute inset-2 rounded-full opacity-20;
+  background: linear-gradient(
+    to right,
+    theme(colors.primary.DEFAULT/20),
+    theme(colors.accent.DEFAULT/10)
+  );
+  border: 1px solid theme(colors.primary.DEFAULT/10);
+  transition: all 0.5s ease-out;
+}
+
+.launch-orbit {
+  @apply absolute inset-0 rounded-full opacity-40;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    theme(colors.primary.DEFAULT/20) 90deg,
+    transparent 180deg
+  );
+  animation: orbit-spin 4s linear infinite;
+}
+
+.launch-trail {
+  @apply absolute h-1 w-8 rounded-full;
+  left: 50%;
+  top: 50%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    theme(colors.primary.DEFAULT/40),
+    theme(colors.accent.DEFAULT/40),
+    transparent
+  );
+  animation: rocket-trail 2s ease-in-out infinite;
+}
+
+.launch-stars {
+  @apply absolute inset-0;
+}
+
+.micro-star {
+  @apply absolute w-1 h-1 rounded-full bg-primary/60;
+  animation: star-blink 1.5s ease-in-out infinite;
+}
+
+.micro-star:nth-child(1) {
+  left: 20%;
+  top: 20%;
+  animation-delay: 0.2s;
+}
+
+.micro-star:nth-child(2) {
+  right: 25%;
+  top: 60%;
+  animation-delay: 0.5s;
+}
+
+.micro-star:nth-child(3) {
+  left: 60%;
+  bottom: 25%;
+  animation-delay: 0.8s;
+}
+
+.icon-container {
+  @apply absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 
+         w-14 h-14 flex items-center justify-center rounded-xl
+         transition-all duration-500 z-20;
+  background: linear-gradient(
+    165deg,
+    rgba(255, 255, 255, 0.08),
+    rgba(255, 255, 255, 0.02)
+  );
+  box-shadow: 0 8px 32px -8px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+}
+
+.icon-shine {
+  @apply absolute inset-0 opacity-0;
+  background: linear-gradient(
+    135deg,
+    transparent,
+    theme(colors.primary.DEFAULT/30) 50%,
+    transparent
+  );
+  animation: shineEffect 3s ease-in-out infinite;
+}
+
+.space-particles {
+  @apply absolute inset-0 opacity-40;
+  transform-style: preserve-3d;
+}
+
+.space-particle {
+  @apply absolute w-0.5 h-0.5 rounded-full;
+  background: theme(colors.primary.DEFAULT);
+  transition: all 0.5s ease-out;
+}
+
+.space-particle:nth-child(1) {
+  left: 20%;
+  top: 20%;
+}
+.space-particle:nth-child(2) {
+  right: 20%;
+  top: 20%;
+}
+.space-particle:nth-child(3) {
+  left: 20%;
+  bottom: 20%;
+}
+.space-particle:nth-child(4) {
+  right: 20%;
+  bottom: 20%;
+}
+
+.mission-status {
+  @apply flex items-center gap-2 text-xs font-mono text-white/60;
+}
+
+.status-dot {
+  @apply w-1.5 h-1.5 rounded-full bg-primary;
+  box-shadow: 0 0 8px theme(colors.primary.DEFAULT/70);
+  animation: pulse 2s infinite;
+}
+
+.mission-card-content {
+  @apply relative p-8 z-20;
+  transform: translateZ(60px);
+}
+
+.mission-footer {
+  @apply mt-6 flex justify-between items-center;
+}
+
+.tech-dots {
+  @apply flex gap-2;
+}
+
+.tech-dot {
+  @apply w-1 h-1 rounded-full bg-white/30;
+}
+
+.scanner-line {
+  @apply absolute inset-x-0 h-[2px] opacity-0 transition-opacity duration-300;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    theme(colors.primary.DEFAULT),
+    transparent
+  );
+  animation: scan 3s ease-in-out infinite;
+  top: 0;
+}
+
+.mission-card:hover {
+  .icon-container {
+    transform: translateZ(80px) rotate(360deg);
+  }
+
+  .orbit-line {
+    transform: translateZ(30px) rotate(-180deg);
+  }
+}
+
+.mission-card-inner:hover {
+  .scanner-line {
+    @apply opacity-100;
+  }
+
+  .portal-ring {
+    animation: spin 10s linear infinite;
+  }
+
+  .portal-ring-2 {
+    animation: spin-reverse 8s linear infinite;
+  }
+
+  .icon-container {
+    transform: translate(-50%, -50%) scale(1.05);
+    box-shadow: 0 12px 48px -8px rgba(0, 0, 0, 0.4),
+      0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+  }
+
+  .launch-orbit {
+    animation: orbit-spin 2s linear infinite;
+    opacity: 0.6;
+  }
+
+  .launch-trail {
+    animation: rocket-trail 1.5s ease-in-out infinite;
+  }
+
+  .micro-star {
+    animation: star-blink 1s ease-in-out infinite;
+  }
+
+  .icon-container {
+    transform: translateZ(30px);
+    box-shadow: 0 12px 48px -8px rgba(0, 0, 0, 0.6),
+      0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+  }
+
+  .space-particle:nth-child(1) {
+    transform: translate(5px, 5px);
+  }
+  .space-particle:nth-child(2) {
+    transform: translate(-5px, 5px);
+  }
+  .space-particle:nth-child(3) {
+    transform: translate(5px, -5px);
+  }
+  .space-particle:nth-child(4) {
+    transform: translate(-5px, -5px);
+  }
+
+  .space-particle {
+    animation-duration: 2s;
+  }
+
+  .orbit-icon {
+    animation-duration: 3s;
+  }
+}
+
+.mission-icon {
+  @apply text-3xl relative z-10;
+  background: linear-gradient(135deg, #fff, theme(colors.primary.DEFAULT));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 8px theme(colors.primary.DEFAULT/30));
+}
+
+.mission-title {
+  @apply text-2xl font-bold mb-4 relative;
+  background: linear-gradient(135deg, #fff 30%, theme(colors.primary.light));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 30px theme(colors.primary.DEFAULT/30);
+}
+
+.mission-description {
+  @apply text-white/70 relative leading-relaxed;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.card-background {
+  @apply absolute inset-0 z-10;
+  background: radial-gradient(
+    circle at top right,
+    theme(colors.space.darker/90),
+    theme(colors.space.darker)
+  );
+}
+
+.card-border {
+  @apply absolute inset-0 rounded-3xl z-0;
+  background: linear-gradient(
+    165deg,
+    theme(colors.primary.DEFAULT/30),
+    theme(colors.accent.DEFAULT/5)
+  );
+  mask: linear-gradient(#000, #000) content-box, linear-gradient(#000, #000);
+  mask-composite: exclude;
+  padding: 1px;
+}
+
+.card-noise {
+  @apply absolute inset-0 opacity-[0.015] mix-blend-overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3C/rect width='100%' height='100%' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+@keyframes float-particle {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(10px, -10px, 50px) rotate(180deg);
+  }
+}
+
+@keyframes fadeInSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin-reverse {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes scan {
+  0% {
+    transform: translateY(0) scaleX(0.5);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(400px) scaleX(1);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(0) scaleX(0.5);
+    opacity: 0;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.8);
+  }
+}
+
+@keyframes orbit-spin {
+  from {
+    transform: rotate(0deg) scale(0.9);
+  }
+  to {
+    transform: rotate(360deg) scale(1.1);
+  }
+}
+
+@keyframes rocket-trail {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg) translateX(-10px);
+    opacity: 0;
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(180deg) translateX(10px);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg) translateX(-10px);
+    opacity: 0;
+  }
+}
+
+@keyframes star-blink {
+  0%,
+  100% {
+    transform: scale(0.3);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes orbitAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.8) rotate(0deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(360deg);
+  }
+}
+
+@keyframes orbitRocket {
+  from {
+    transform: rotate(0deg) translateX(0);
+  }
+  to {
+    transform: rotate(360deg) translateX(0);
+  }
+}
+
+@keyframes shineEffect {
+  0%,
+  100% {
+    opacity: 0;
+    transform: translateX(-100%) rotate(-45deg);
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateX(100%) rotate(-45deg);
+  }
+}
+
+@keyframes particleFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translate3d(5px, -5px, 20px);
+    opacity: 1;
+  }
+}
+
+@media (hover: hover) {
+  .mission-card:hover {
+    transform: translateY(-10px);
+  }
+
+  .mission-card-inner:hover {
+    transform: translateZ(40px);
+    box-shadow: 0 35px 55px -15px rgba(0, 0, 0, 0.5),
+      0 0 0 1px rgba(255, 255, 255, 0.15) inset;
+  }
+}
+
+.orbit-icon {
+  @apply absolute text-primary/60 text-lg;
+  left: 50%;
+  top: 50%;
+  transform-origin: 0 40px;
+}
+
+.orbit-icon svg {
+  @apply -translate-x-1/2 -translate-y-1/2;
+  filter: drop-shadow(0 0 4px theme(colors.primary.DEFAULT/50));
+}
