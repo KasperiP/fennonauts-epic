@@ -97,9 +97,9 @@ export default function Hero() {
           </div>
 
           {/* Video Grid - adjusted for mobile */}
-          <div className="relative w-full perspective-container will-change-transform max-lg:-mx-4 lg:mx-0">
+          <div className="relative w-full perspective-container will-change-transform lg:mx-0 max-lg:mt-16">
             {/* Title repositioned for better mobile visibility */}
-            <div className="absolute -top-8 lg:-top-16 left-0 right-0 text-center transform-gpu">
+            <div className="absolute -top-8 lg:-top-16 left-0 right-0 text-center transform-gpu max-lg:-top-14 z-30">
               <span className="preview-title text-base lg:text-lg">
                 Through the Fennoverse
               </span>
