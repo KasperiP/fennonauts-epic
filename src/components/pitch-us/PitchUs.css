@@ -184,30 +184,30 @@
     @apply absolute inset-0;
     background: radial-gradient(
       circle at 50% -20%,
-      theme(colors.space.darker/95) 0%,
-      theme(colors.space.darker) 60%
+      theme(colors.space.darker/80) 0%,
+      theme(colors.space.darker/95) 60%
     );
 
     &::before {
       content: "";
-      @apply absolute inset-0 opacity-5;
+      @apply absolute inset-0 opacity-10;
       background-image: linear-gradient(
-          theme(colors.primary.DEFAULT/5) 1px,
+          theme(colors.primary.DEFAULT/10) 1px,
           transparent 1px
         ),
         linear-gradient(
           90deg,
-          theme(colors.primary.DEFAULT/5) 1px,
+          theme(colors.primary.DEFAULT/10) 1px,
           transparent 1px
         ),
         radial-gradient(
           circle at 75% 75%,
-          theme(colors.primary.DEFAULT/3) 0%,
+          theme(colors.primary.DEFAULT/20) 0%,
           transparent 50%
         ),
         radial-gradient(
           circle at 25% 25%,
-          theme(colors.accent.DEFAULT/3) 0%,
+          theme(colors.accent.DEFAULT/20) 0%,
           transparent 50%
         );
       background-size: 50px 50px, 50px 50px, 600px 600px, 400px 400px;
@@ -215,36 +215,39 @@
     }
 
     &::after {
-      @apply absolute inset-0 opacity-5;
+      @apply absolute inset-0 opacity-10;
       background-image: repeating-linear-gradient(
-        45deg,
-        transparent 0%,
-        transparent 49%,
-        theme(colors.primary.DEFAULT/20) 50%,
-        transparent 51%,
-        transparent 100%
-      );
-      background-size: 100px 100px;
+          45deg,
+          transparent 0%,
+          transparent 49%,
+          theme(colors.primary.DEFAULT/15) 50%,
+          transparent 51%,
+          transparent 100%
+        ),
+        radial-gradient(
+          1000px circle at 50% 50%,
+          theme(colors.primary.DEFAULT/5) 0%,
+          transparent 100%
+        );
+      background-size: 100px 100px, 100% 100%;
       animation: flightPath 20s linear infinite;
     }
   }
 
   .mission-control-grid {
-    @apply absolute inset-0 opacity-5;
-    background-image: 
-      /* Mission Control Console */ radial-gradient(
+    @apply absolute inset-0 opacity-10;
+    background-image: radial-gradient(
       circle at 50% 120%,
-      theme(colors.primary.DEFAULT/30) 0%,
-      transparent 60%
+      theme(colors.primary.DEFAULT/20) 0%,
+      transparent 70%
     );
 
     &::before {
       content: "";
       @apply absolute inset-0;
-      background-image: 
-        /* Console Buttons */ radial-gradient(
+      background-image: radial-gradient(
         circle at center,
-        theme(colors.primary.DEFAULT/20) 0%,
+        theme(colors.primary.DEFAULT/30) 0%,
         transparent 2px
       );
       background-size: 30px 30px;
@@ -253,26 +256,29 @@
   }
 
   .space-particles {
-    @apply absolute inset-0 opacity-10;
+    @apply absolute inset-0 opacity-15;
     background-image: radial-gradient(
-      theme(colors.primary.DEFAULT/30) 1px,
-      transparent 1px
-    );
-    background-size: 50px 50px;
-    animation: particleFloat 20s linear infinite;
+        theme(colors.primary.DEFAULT/40) 1px,
+        transparent 1px
+      ),
+      radial-gradient(
+        circle at 50% 50%,
+        theme(colors.primary.DEFAULT/5) 0%,
+        transparent 100%
+      );
+    background-size: 50px 50px, 100% 100%;
 
     &::before {
       content: "";
       @apply absolute inset-0;
-      background-image: 
-        /* Star Map Points */ radial-gradient(
+      background-image: radial-gradient(
           circle at center,
-          theme(colors.primary.DEFAULT/40) 0%,
+          theme(colors.primary.DEFAULT/50) 0%,
           transparent 1px
         ),
         radial-gradient(
           circle at center,
-          theme(colors.accent.DEFAULT/30) 0%,
+          theme(colors.accent.DEFAULT/40) 0%,
           transparent 1px
         );
       background-position: 0 0, 10px 10px;
@@ -292,6 +298,57 @@
 
     span {
       @apply text-white/80 text-sm tracking-wider font-medium;
+    }
+  }
+
+  .section-portal {
+    @apply absolute top-0 left-0 right-0 h-64 -translate-y-1/2 pointer-events-none;
+    background: radial-gradient(
+      ellipse at 50% 0%,
+      theme(colors.primary.DEFAULT/20),
+      transparent 70%
+    );
+  }
+
+  .transition-layer {
+    @apply absolute -top-32 left-0 right-0 h-32 pointer-events-none;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      theme(colors.space.darker) 90%
+    );
+
+    &::before {
+      content: "";
+      @apply absolute inset-0;
+      background: repeating-linear-gradient(
+        90deg,
+        theme(colors.primary.DEFAULT/10) 0px,
+        theme(colors.primary.DEFAULT/10) 1px,
+        transparent 1px,
+        transparent 30px
+      );
+      mask-image: linear-gradient(to bottom, transparent, black);
+    }
+  }
+
+  .connecting-particles {
+    @apply absolute -top-40 left-0 right-0 h-40 pointer-events-none;
+    background-image: radial-gradient(
+      1px 1px at 50% 50%,
+      theme(colors.primary.DEFAULT/50) 0%,
+      transparent 100%
+    );
+    background-size: 20px 20px;
+    animation: particleDrift 20s linear infinite;
+  }
+
+  @keyframes particleDrift {
+    0% {
+      background-position: 0px 40px;
+    }
+    100% {
+      background-position: 0px 0px;
     }
   }
 }
