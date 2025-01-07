@@ -1,12 +1,17 @@
 .pitch-us {
   .mission-terminal {
-    @apply bg-space-darker/80 rounded-2xl overflow-hidden backdrop-blur-xl
-           border border-primary/20 shadow-2xl;
+    @apply bg-space-darker/60 rounded-2xl overflow-hidden backdrop-blur-xl
+           border border-white/10;
+    box-shadow: 0 10px 30px -5px theme(colors.space.darker/90);
+
+    &:hover {
+      box-shadow: 0 15px 40px -5px theme(colors.space.darker/90);
+    }
   }
 
   .terminal-header {
-    @apply flex items-center justify-between px-4 py-3 bg-space-dark/50
-           border-b border-primary/10;
+    @apply flex items-center justify-between px-4 py-3 bg-space-dark/20
+           border-b border-white/5;
   }
 
   .terminal-controls {
@@ -75,18 +80,26 @@
   }
 
   .cosmic-input {
-    @apply w-full px-4 py-3 rounded-xl bg-space-dark/50 backdrop-blur-sm
-           border border-primary/20 text-white/90 placeholder:text-white/40
-           focus:border-primary/50 focus:ring-1 focus:ring-primary/30
+    @apply w-full px-4 py-3 rounded-xl bg-space-dark/40 backdrop-blur-sm
+           border border-white/10 text-white/90 placeholder:text-white/40
+           focus:border-primary/30 focus:ring-1 focus:ring-primary/20
            transition-all duration-300;
 
     &:hover {
-      @apply border-primary/30 bg-space-dark/60;
+      @apply border-white/20 bg-space-dark/50;
     }
 
     &:focus {
-      @apply outline-none ring-2 ring-primary/20 border-primary/40
-             bg-space-dark/70 shadow-lg shadow-primary/10;
+      @apply outline-none ring-1 ring-primary/20 border-primary/30
+             bg-space-dark/60;
+    }
+
+    &::placeholder {
+      transition: opacity 0.3s ease;
+    }
+
+    &:focus::placeholder {
+      opacity: 0.3;
     }
   }
 
@@ -110,38 +123,32 @@
 
   .stage-option,
   .platform-option {
-    @apply px-4 py-2 rounded-lg border border-primary/20 
+    @apply px-4 py-2 rounded-lg border border-white/10 
            text-sm text-white/70 cursor-pointer transition-all duration-300
-           bg-space-dark/30 hover:bg-space-dark/50 
+           bg-space-dark/40 hover:bg-space-dark/50 
            flex items-center justify-center text-center;
 
     &.selected {
-      @apply border-primary bg-primary/20 text-white
-             shadow-lg shadow-primary/20;
+      @apply border-primary/40 bg-primary/15 text-white;
+      box-shadow: 0 2px 8px theme(colors.primary.DEFAULT/10);
+    }
+
+    &:hover:not(.selected) {
+      @apply border-white/10 transform-none
+             shadow-none;
     }
   }
 
   .form-footer {
-    @apply flex justify-center pt-8 border-t border-primary/10 mt-8;
+    @apply flex justify-center pt-8 border-t border-white/5 mt-8;
   }
 
   /* Terminal glow effect */
   .mission-terminal {
-    box-shadow: 0 0 50px theme(colors.primary.DEFAULT/10);
+    box-shadow: 0 0 30px theme(colors.space.darker/80);
 
     &:hover {
-      box-shadow: 0 0 70px theme(colors.primary.DEFAULT/15);
-    }
-  }
-
-  /* Input animations */
-  .cosmic-input {
-    &::placeholder {
-      transition: opacity 0.3s ease;
-    }
-
-    &:focus::placeholder {
-      opacity: 0.3;
+      box-shadow: 0 0 40px theme(colors.space.darker/90);
     }
   }
 
@@ -151,27 +158,10 @@
     min-height: 100px;
   }
 
-  /* Hover effects for options */
-  .stage-option,
-  .platform-option {
-    &:hover:not(.selected) {
-      @apply border-primary/30 transform -translate-y-0.5
-             shadow-md shadow-primary/10;
-    }
-
-    &.selected {
-      background: linear-gradient(
-        135deg,
-        theme(colors.primary.DEFAULT/20),
-        theme(colors.accent.DEFAULT/20)
-      );
-    }
-  }
-
   /* Status indicator pulse */
   .status-indicator {
     @apply flex items-center gap-2 px-3 py-1.5 rounded-full text-sm
-           bg-space-dark/80 backdrop-blur-sm border border-primary/20;
+           bg-space-dark/30 backdrop-blur-sm border border-white/5;
   }
 
   .pulse-dot {
@@ -194,19 +184,101 @@
     @apply absolute inset-0;
     background: radial-gradient(
       circle at 50% -20%,
-      theme(colors.space.dark) 0%,
+      theme(colors.space.darker/95) 0%,
       theme(colors.space.darker) 60%
     );
+
+    &::before {
+      content: "";
+      @apply absolute inset-0 opacity-5;
+      background-image: linear-gradient(
+          theme(colors.primary.DEFAULT/5) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          theme(colors.primary.DEFAULT/5) 1px,
+          transparent 1px
+        ),
+        radial-gradient(
+          circle at 75% 75%,
+          theme(colors.primary.DEFAULT/3) 0%,
+          transparent 50%
+        ),
+        radial-gradient(
+          circle at 25% 25%,
+          theme(colors.accent.DEFAULT/3) 0%,
+          transparent 50%
+        );
+      background-size: 50px 50px, 50px 50px, 600px 600px, 400px 400px;
+      animation: radarScan 12s linear infinite;
+    }
+
+    &::after {
+      @apply absolute inset-0 opacity-5;
+      background-image: repeating-linear-gradient(
+        45deg,
+        transparent 0%,
+        transparent 49%,
+        theme(colors.primary.DEFAULT/20) 50%,
+        transparent 51%,
+        transparent 100%
+      );
+      background-size: 100px 100px;
+      animation: flightPath 20s linear infinite;
+    }
+  }
+
+  .mission-control-grid {
+    @apply absolute inset-0 opacity-5;
+    background-image: 
+      /* Mission Control Console */ radial-gradient(
+      circle at 50% 120%,
+      theme(colors.primary.DEFAULT/30) 0%,
+      transparent 60%
+    );
+
+    &::before {
+      content: "";
+      @apply absolute inset-0;
+      background-image: 
+        /* Console Buttons */ radial-gradient(
+        circle at center,
+        theme(colors.primary.DEFAULT/20) 0%,
+        transparent 2px
+      );
+      background-size: 30px 30px;
+      animation: consoleBlink 4s infinite;
+    }
   }
 
   .space-particles {
-    @apply absolute inset-0 opacity-30;
+    @apply absolute inset-0 opacity-10;
     background-image: radial-gradient(
       theme(colors.primary.DEFAULT/30) 1px,
       transparent 1px
     );
     background-size: 50px 50px;
     animation: particleFloat 20s linear infinite;
+
+    &::before {
+      content: "";
+      @apply absolute inset-0;
+      background-image: 
+        /* Star Map Points */ radial-gradient(
+          circle at center,
+          theme(colors.primary.DEFAULT/40) 0%,
+          transparent 1px
+        ),
+        radial-gradient(
+          circle at center,
+          theme(colors.accent.DEFAULT/30) 0%,
+          transparent 1px
+        );
+      background-position: 0 0, 10px 10px;
+      background-size: 60px 60px;
+      animation: starMap 15s linear infinite;
+    }
   }
 
   .cosmic-badge {
@@ -239,5 +311,47 @@
   }
   100% {
     transform: translateY(50px);
+  }
+}
+
+@keyframes radarScan {
+  0% {
+    transform: translateZ(0);
+    opacity: 0.02;
+  }
+  50% {
+    opacity: 0.04;
+  }
+  100% {
+    transform: translateZ(0);
+    opacity: 0.02;
+  }
+}
+
+@keyframes flightPath {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 100px 100px;
+  }
+}
+
+@keyframes consoleBlink {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes starMap {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-50px) rotate(1deg);
   }
 }

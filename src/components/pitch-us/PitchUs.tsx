@@ -43,6 +43,15 @@ export default function PitchUs() {
       <div className="section-bg">
         <div className="space-particles" />
         <div className="mission-control-grid opacity-5" />
+
+        {/* Add decorative mission elements */}
+        <div className="absolute right-0 top-0 w-96 h-96 opacity-10 pointer-events-none">
+          <div className="radar-sweep" />
+        </div>
+
+        <div className="absolute left-0 bottom-0 w-64 h-64 opacity-10 pointer-events-none">
+          <div className="constellation-map" />
+        </div>
       </div>
 
       <div className="container-custom relative z-10">
