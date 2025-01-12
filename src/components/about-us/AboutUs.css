@@ -1,17 +1,12 @@
 .about-us {
   .floating-particle {
     @apply absolute text-lg transform-gpu;
-    animation: float-particle 8s ease-in-out infinite;
+    animation: floatParticle 8s ease-in-out infinite;
   }
 
   .mission-cards-container {
     @apply relative z-10;
     perspective: 2000px;
-  }
-
-  .mission-cards-grid {
-    @apply grid gap-8 relative;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   }
 
   .mission-cards-hex-grid {
@@ -66,58 +61,6 @@
     transition: all 0.5s ease-out;
   }
 
-  .launch-orbit {
-    @apply absolute inset-0 rounded-full opacity-40;
-    background: conic-gradient(
-      from 0deg,
-      transparent 0deg,
-      theme(colors.primary.DEFAULT/20) 90deg,
-      transparent 180deg
-    );
-    animation: orbit-spin 4s linear infinite;
-  }
-
-  .launch-trail {
-    @apply absolute h-1 w-8 rounded-full;
-    left: 50%;
-    top: 50%;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      theme(colors.primary.DEFAULT/40),
-      theme(colors.accent.DEFAULT/40),
-      transparent
-    );
-    animation: rocket-trail 2s ease-in-out infinite;
-  }
-
-  .launch-stars {
-    @apply absolute inset-0;
-  }
-
-  .micro-star {
-    @apply absolute w-1 h-1 rounded-full bg-primary/60;
-    animation: star-blink 1.5s ease-in-out infinite;
-  }
-
-  .micro-star:nth-child(1) {
-    left: 20%;
-    top: 20%;
-    animation-delay: 0.2s;
-  }
-
-  .micro-star:nth-child(2) {
-    right: 25%;
-    top: 60%;
-    animation-delay: 0.5s;
-  }
-
-  .micro-star:nth-child(3) {
-    left: 60%;
-    bottom: 25%;
-    animation-delay: 0.8s;
-  }
-
   .icon-container {
     @apply absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 
                w-14 h-14 flex items-center justify-center rounded-xl
@@ -129,17 +72,6 @@
     );
     box-shadow: 0 8px 32px -8px rgba(0, 0, 0, 0.3),
       0 0 0 1px rgba(255, 255, 255, 0.1) inset;
-  }
-
-  .icon-shine {
-    @apply absolute inset-0 opacity-0;
-    background: linear-gradient(
-      135deg,
-      transparent,
-      theme(colors.primary.DEFAULT/30) 50%,
-      transparent
-    );
-    animation: shineEffect 3s ease-in-out infinite;
   }
 
   .space-particles {
@@ -224,31 +156,14 @@
       @apply opacity-100;
     }
 
-    .portal-ring {
-      animation: spin 10s linear infinite;
-    }
-
-    .portal-ring-2 {
-      animation: spin-reverse 8s linear infinite;
-    }
-
     .icon-container {
       transform: translate(-50%, -50%) scale(1.05);
       box-shadow: 0 12px 48px -8px rgba(0, 0, 0, 0.4),
         0 0 0 1px rgba(255, 255, 255, 0.2) inset;
     }
 
-    .launch-orbit {
-      animation: orbit-spin 2s linear infinite;
-      opacity: 0.6;
-    }
-
     .launch-trail {
-      animation: rocket-trail 1.5s ease-in-out infinite;
-    }
-
-    .micro-star {
-      animation: star-blink 1s ease-in-out infinite;
+      animation: rocketTrail 1.5s ease-in-out infinite;
     }
 
     .icon-container {
@@ -323,11 +238,6 @@
     padding: 1px;
   }
 
-  .card-noise {
-    @apply absolute inset-0 opacity-[0.015] mix-blend-overlay;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3C/rect width='100%' height='100%' filter='url(%23noise)'/%3E%3C/svg%3E");
-  }
-
   @media (hover: hover) {
     .mission-card:hover {
       transform: translateY(-10px);
@@ -353,7 +263,7 @@
   }
 }
 
-@keyframes float-particle {
+@keyframes floatParticle {
   0%,
   100% {
     transform: translate3d(0, 0, 0) rotate(0deg);
@@ -380,7 +290,7 @@
   }
 }
 
-@keyframes spin-reverse {
+@keyframes spinReverse {
   to {
     transform: rotate(-360deg);
   }
@@ -413,7 +323,7 @@
   }
 }
 
-@keyframes orbit-spin {
+@keyframes orbitSpin {
   from {
     transform: rotate(0deg) scale(0.9);
   }
@@ -422,7 +332,7 @@
   }
 }
 
-@keyframes rocket-trail {
+@keyframes rocketTrail {
   0% {
     transform: translate(-50%, -50%) rotate(0deg) translateX(-10px);
     opacity: 0;
@@ -434,61 +344,5 @@
   100% {
     transform: translate(-50%, -50%) rotate(360deg) translateX(-10px);
     opacity: 0;
-  }
-}
-
-@keyframes star-blink {
-  0%,
-  100% {
-    transform: scale(0.3);
-    opacity: 0.3;
-  }
-  50% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-@keyframes orbitAppear {
-  from {
-    opacity: 0;
-    transform: scale(0.8) rotate(0deg);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1) rotate(360deg);
-  }
-}
-
-@keyframes orbitRocket {
-  from {
-    transform: rotate(0deg) translateX(0);
-  }
-  to {
-    transform: rotate(360deg) translateX(0);
-  }
-}
-
-@keyframes shineEffect {
-  0%,
-  100% {
-    opacity: 0;
-    transform: translateX(-100%) rotate(-45deg);
-  }
-  50% {
-    opacity: 0.5;
-    transform: translateX(100%) rotate(-45deg);
-  }
-}
-
-@keyframes particleFloat {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0);
-    opacity: 0.3;
-  }
-  50% {
-    transform: translate3d(5px, -5px, 20px);
-    opacity: 1;
   }
 }

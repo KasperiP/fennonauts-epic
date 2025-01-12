@@ -348,15 +348,6 @@
   }
 }
 
-@keyframes particleFloat {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(50px);
-  }
-}
-
 @keyframes radarScan {
   0% {
     transform: translateZ(0);

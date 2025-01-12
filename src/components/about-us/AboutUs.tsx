@@ -42,7 +42,6 @@ export default function AboutUs() {
       <div className="absolute inset-0 bg-space-darker">
         <div className="cosmic-nebula-effect opacity-20" />
 
-        {/* Enhanced particle field */}
         <div className="absolute inset-0">
           {[...Array(20)].map((_, i) => (
             <div
