@@ -35,7 +35,7 @@ export default function Hero() {
 
       <div className="container-custom relative z-10">
         <div className="flex flex-col lg:grid lg:grid-cols-2 gap-6 lg:gap-8 min-h-[100dvh] items-start lg:items-center py-24 lg:py-0">
-          <div className="text-left space-y-4 lg:space-y-8 animate-fade-in-up content-wrapper max-lg:mt-8">
+          <div className="text-left space-y-4 lg:space-y-8 animate-fade-in-up content-wrapper max-lg:mt-8 z-10">
             <div className="inline-block">
               <div className="cosmic-badge text-xs sm:text-sm">
                 <FaRocket className="text-xl mr-2" />
@@ -212,13 +212,6 @@ export default function Hero() {
               </div>
             </div>
           </div>
-        </div>
-      </div>
-
-      <div className="scroll-indicator-container">
-        <span className="scroll-indicator-text">Scroll Down</span>
-        <div className="scroll-indicator-circle">
-          <div className="scroll-indicator-dot"></div>
         </div>
       </div>
     </section>
