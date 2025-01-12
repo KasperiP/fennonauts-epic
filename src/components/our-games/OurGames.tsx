@@ -1,5 +1,5 @@
 "use client";
-import gameImageTemplate from "@/../public/gameImageTemplate.jpg";
+import gameImageTemplate from "@/../public/static/gameImageTemplate.jpg";
 import Image from "next/image";
 import { useState } from "react";
 import { FaChevronLeft, FaChevronRight, FaSatellite } from "react-icons/fa";

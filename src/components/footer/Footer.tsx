@@ -1,11 +1,7 @@
+import logoSvg from "@/../public/static/logo.svg";
+import Image from "next/image";
 import Link from "next/link";
-import {
-  FaDiscord,
-  FaGithub,
-  FaRocket,
-  FaSatellite,
-  FaTwitter,
-} from "react-icons/fa";
+import { FaDiscord, FaGithub, FaRocket, FaTwitter } from "react-icons/fa";
 import { HiSparkles } from "react-icons/hi2";
 import "./Footer.css";
 
@@ -55,10 +51,14 @@ export default function Footer() {
             <div className="brand-column">
               <div className="brand-content">
                 <div className="logo-section">
-                  <FaSatellite className="text-4xl text-primary mb-4" />
-                  <h2 className="text-2xl font-bold cosmic-text mb-4">
-                    Fennonauts
-                  </h2>
+                  <Image
+                    src={logoSvg}
+                    alt="Fennonauts Logo"
+                    width={36}
+                    height={36}
+                    className="text-primary mb-4"
+                  />
+                  <h2 className="text-2xl font-bold mb-4">Fennonauts</h2>
                 </div>
                 <p className="text-white/70 mb-6">
                   Launching Finnish indie games to the stars! Join our mission

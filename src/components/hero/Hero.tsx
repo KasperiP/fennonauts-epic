@@ -7,7 +7,7 @@ import {
   SiPlaystation,
   SiSteam,
 } from "react-icons/si";
-import playstationPartnersLogo from "../../../public/playstation-partners.svg";
+import playstationPartnersLogo from "../../../public/static/playstation-partners.svg";
 import { Starfield } from "./Starfield";
 
 export default function Hero() {
@@ -133,7 +133,7 @@ export default function Hero() {
                 <div className="featured-section">
                   <div className="main-video-container hover-tilt">
                     <video
-                      src="/video1.mp4"
+                      src="/static/video1.mp4"
                       autoPlay
                       muted
                       loop
@@ -194,7 +194,7 @@ export default function Hero() {
                         >
                           <div className="video-inner">
                             <video
-                              src={`/video${game.id + 1}.mp4`}
+                              src={`/static/video${game.id + 1}.mp4`}
                               autoPlay
                               muted
                               loop

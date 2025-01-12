@@ -1,4 +1,6 @@
 "use client";
+import logoSvg from "@/../public/static/logo.svg";
+import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 import { FaRocket } from "react-icons/fa";
@@ -31,7 +33,13 @@ export default function Navbar() {
             href="/"
             className="flex items-center space-x-2 text-white hover:scale-105 transition-transform"
           >
-            <FaRocket className="text-primary w-6 h-6" />
+            <Image
+              src={logoSvg}
+              alt="Fennonauts Logo"
+              width={24}
+              height={24}
+              className="w-8 h-8"
+            />
             <span className="font-grotesk font-bold text-lg">Fennonauts</span>
           </Link>
 

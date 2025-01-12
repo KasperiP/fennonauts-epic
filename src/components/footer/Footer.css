@@ -5,19 +5,6 @@
 .footer-bg {
   @apply absolute inset-0;
 
-  &::before {
-    content: "";
-    @apply absolute inset-0;
-    background: 
-      /* Subtle dot pattern */ radial-gradient(
-      1px 1px at 50% 50%,
-      theme(colors.primary.DEFAULT/5) 0%,
-      transparent 100%
-    );
-    background-size: 24px 24px;
-    opacity: 0.02;
-  }
-
   .aurora-layer {
     @apply absolute inset-0;
     background: radial-gradient(
