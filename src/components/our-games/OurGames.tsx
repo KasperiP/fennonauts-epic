@@ -193,7 +193,7 @@ export default function OurGames() {
                           }
                           controls
                           className="mission-preview"
-                          playsInline // Add this for better mobile handling
+                          playsInline
                         />
                       ) : (
                         <Image
@@ -202,7 +202,7 @@ export default function OurGames() {
                           className="mission-preview"
                           fill
                           style={{ objectFit: "cover" }}
-                          sizes="(max-width: 768px) 100vw, 66vw" // Add responsive sizes
+                          sizes="(max-width: 768px) 100vw, 66vw"
                           priority
                           quality={90}
                         />

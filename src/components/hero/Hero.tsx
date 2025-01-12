@@ -14,10 +14,12 @@ import { Starfield } from "./Starfield";
 export default function Hero() {
   return (
     <section className="relative min-h-[100dvh] bg-space-darker overflow-hidden">
+      {/* Background Effects */}
       <div className="absolute inset-0 bg-space-gradient opacity-100"></div>
       <div className="absolute inset-0 bg-aurora-glow opacity-50"></div>
       <div className="cosmic-nebula-effect"></div>
 
+      {/* Aurora Beam Effects */}
       {[...Array(4)].map((_, i) => (
         <div
           key={i}
@@ -35,6 +37,7 @@ export default function Hero() {
 
       <div className="container-custom relative z-10">
         <div className="flex flex-col lg:grid lg:grid-cols-2 gap-6 lg:gap-8 min-h-[100dvh] items-start lg:items-center py-24 lg:py-0">
+          {/* Hero Content - Left Side */}
           <div className="text-left space-y-4 lg:space-y-8 animate-fade-in-up content-wrapper max-lg:mt-8 z-10">
             <div className="inline-block">
               <div className="cosmic-badge text-xs sm:text-sm">
@@ -95,6 +98,7 @@ export default function Hero() {
             </div>
           </div>
 
+          {/* Featured Games Grid - Right Side */}
           <div className="relative w-full perspective-container will-change-transform lg:mx-0 mt-16 max-lg:mt-28">
             <div className="absolute lg:-top-[5.5rem] left-0 right-0 z-30 max-lg:-top-24">
               <div className="floating-title">

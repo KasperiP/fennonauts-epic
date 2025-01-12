@@ -16,6 +16,7 @@ const DEVELOPMENT_STAGES = [
 const PLATFORMS = ["PC", "Console", "Mobile", "VR", "Other"] as const;
 
 export default function PitchUs() {
+  // Form state management
   const [formData, setFormData] = useState({
     name: "",
     role: "",
@@ -27,6 +28,7 @@ export default function PitchUs() {
     email: "",
   });
 
+  // Form event handlers
   const updateFormData = (field: string, value: string | string[]) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
@@ -39,12 +41,12 @@ export default function PitchUs() {
 
   return (
     <section className="relative py-32 overflow-hidden pitch-us" id="pitch">
+      {/* Background Effects */}
       <div className="section-transition" />
       <div className="section-bg">
         <div className="space-particles" />
         <div className="mission-control-grid opacity-5" />
 
-        {/* Add decorative mission elements */}
         <div className="absolute right-0 top-0 w-96 h-96 opacity-10 pointer-events-none">
           <div className="radar-sweep" />
         </div>
@@ -55,6 +57,7 @@ export default function PitchUs() {
       </div>
 
       <div className="container-custom relative z-10">
+        {/* Section Header */}
         <div className="text-center space-y-6 mb-20">
           <div className="flex justify-center">
             <div className="cosmic-badge mx-auto w-fit backdrop-blur-2xl">
@@ -72,8 +75,10 @@ export default function PitchUs() {
           </p>
         </div>
 
+        {/* Pitch Form Terminal */}
         <div className="max-w-3xl mx-auto">
           <div className="mission-terminal">
+            {/* Terminal Header */}
             <div className="terminal-header">
               <div className="terminal-controls">
                 <span className="control close"></span>
@@ -92,10 +97,10 @@ export default function PitchUs() {
               </div>
             </div>
 
+            {/* Form Content */}
             <form onSubmit={handleSubmit} className="terminal-content">
               <div className="mission-form">
                 <div className="form-grid">
-                  {/* Commander Details */}
                   <div className="form-section">
                     <div className="section-header">
                       <PiGameControllerFill className="section-icon" />
@@ -121,7 +126,6 @@ export default function PitchUs() {
                     </div>
                   </div>
 
-                  {/* Mission Details */}
                   <div className="form-section">
                     <div className="section-header">
                       <FaGamepad className="section-icon" />
@@ -150,7 +154,6 @@ export default function PitchUs() {
                     </div>
                   </div>
 
-                  {/* Technical Specifications */}
                   <div className="form-section">
                     <div className="section-header">
                       <IoSparkles className="section-icon" />
@@ -227,7 +230,6 @@ export default function PitchUs() {
                     </div>
                   </div>
 
-                  {/* Contact Details */}
                   <div className="form-section">
                     <div className="input-group">
                       <input

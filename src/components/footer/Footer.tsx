@@ -37,7 +37,7 @@ export default function Footer() {
 
   return (
     <footer className="relative footer-wrapper">
-      {/* Simplified background layers */}
+      {/* Background Elements */}
       <div className="absolute inset-0 footer-bg">
         <div className="aurora-layer" />
       </div>
@@ -45,7 +45,7 @@ export default function Footer() {
 
       <div className="container-custom relative z-10 pt-20 pb-12">
         <div className="footer-content">
-          {/* Main Footer Content */}
+          {/* Main Footer Grid */}
           <div className="footer-grid">
             {/* Brand Column */}
             <div className="brand-column">
@@ -79,7 +79,7 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* Navigation Columns */}
+            {/* Navigation Sections */}
             {NAV_SECTIONS.map((section, index) => (
               <div key={index} className="nav-column">
                 <h3 className="nav-title">
@@ -98,7 +98,7 @@ export default function Footer() {
               </div>
             ))}
 
-            {/* Newsletter Column */}
+            {/* Newsletter Signup */}
             <div className="newsletter-column">
               <h3 className="nav-title">
                 <FaRocket className="title-icon" />
