@@ -13,12 +13,10 @@ import { Starfield } from "./Starfield";
 export default function Hero() {
   return (
     <section className="relative min-h-[100dvh] bg-space-darker overflow-hidden">
-      {/* Background layers */}
       <div className="absolute inset-0 bg-space-gradient opacity-100"></div>
       <div className="absolute inset-0 bg-aurora-glow opacity-50"></div>
       <div className="nebula-effect"></div>
 
-      {/* Aurora beams - reduced quantity and opacity */}
       {[...Array(4)].map((_, i) => (
         <div
           key={i}
@@ -36,7 +34,6 @@ export default function Hero() {
 
       <div className="container-custom relative z-10">
         <div className="flex flex-col lg:grid lg:grid-cols-2 gap-6 lg:gap-8 min-h-[100dvh] items-start lg:items-center py-24 lg:py-0">
-          {/* Left Content - adjusted spacing */}
           <div className="text-left space-y-4 lg:space-y-8 animate-fade-in-up content-wrapper max-lg:mt-8">
             <div className="inline-block">
               <div className="cosmic-badge text-xs sm:text-sm">
@@ -97,9 +94,7 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Video Grid - adjusted for mobile */}
           <div className="relative w-full perspective-container will-change-transform lg:mx-0 mt-16 max-lg:mt-28">
-            {/* Title area redesign - moved closer to content */}
             <div className="absolute -top-12 lg:-top-24 left-0 right-0 z-30 max-lg:-top-24">
               <div className="floating-title">
                 <div className="space-y-2 text-center transform-gpu">
@@ -129,7 +124,6 @@ export default function Hero() {
               }}
             >
               <div className="grid-3d-container">
-                {/* Main featured video */}
                 <div className="featured-section">
                   <div className="main-video-container hover-tilt">
                     <video
@@ -154,7 +148,6 @@ export default function Hero() {
                   </div>
                 </div>
 
-                {/* Side videos in scrollable container on mobile */}
                 <div className="side-section flex-shrink-0 overflow-x-auto lg:overflow-visible">
                   <div className="side-section-wrapper">
                     <div className="flex flex-row lg:flex-col gap-4 lg:gap-6 p-2 lg:p-0">
@@ -221,7 +214,6 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Scroll Indicator */}
       <div className="scroll-indicator-container">
         <span className="scroll-indicator-text">Scroll Down</span>
         <div className="scroll-indicator-circle">
