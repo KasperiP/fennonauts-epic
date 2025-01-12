@@ -139,7 +139,7 @@ export default function Hero() {
                     <div className="video-depth-layer" />
                     <div className="content-overlay">
                       <div className="game-info floating-content">
-                        <div className="game-status">Featured Release</div>
+                        <div className="game-status">Adventure</div>
                         <h3 className="game-name">
                           Mauri Mursu&apos;s Odyssey
                         </h3>
@@ -155,24 +155,18 @@ export default function Hero() {
                       {[
                         {
                           id: 1,
-                          title: "Destroyer Burger",
-                          genre: "Action",
-                          status: "Coming Soon",
-                          depth: 20,
+                          title: "Egg Racing",
+                          genre: "Arcade Racing",
                         },
                         {
                           id: 2,
                           title: "Mythargia",
-                          genre: "RPG",
-                          status: "In Development",
-                          depth: 40,
+                          genre: "Puzzle/Adventure",
                         },
                         {
                           id: 3,
-                          title: "Your game here?",
-                          genre: "Any Genre",
-                          status: "Join Us",
-                          depth: 60,
+                          title: "DESTROYER BURGER",
+                          genre: "Satirical Simulator",
                         },
                       ].map((game, index) => (
                         <div
@@ -180,9 +174,7 @@ export default function Hero() {
                           className="side-video-container animate-slide-in flex-shrink-0 w-[280px] lg:w-auto"
                           style={
                             {
-                              "--depth": `${game.depth}px`,
-                              "--index": index,
-                              animationDelay: `${0.2 + index * 0.1}s`,
+                              animationDelay: `${index * 0.1}s`,
                             } as React.CSSProperties
                           }
                         >
