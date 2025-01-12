@@ -8,6 +8,7 @@ import {
   SiSteam,
 } from "react-icons/si";
 import playstationPartnersLogo from "../../../public/static/playstation-partners.svg";
+import "./Hero.css";
 import { Starfield } from "./Starfield";
 
 export default function Hero() {
@@ -15,7 +16,7 @@ export default function Hero() {
     <section className="relative min-h-[100dvh] bg-space-darker overflow-hidden">
       <div className="absolute inset-0 bg-space-gradient opacity-100"></div>
       <div className="absolute inset-0 bg-aurora-glow opacity-50"></div>
-      <div className="nebula-effect"></div>
+      <div className="cosmic-nebula-effect"></div>
 
       {[...Array(4)].map((_, i) => (
         <div
@@ -95,7 +96,7 @@ export default function Hero() {
           </div>
 
           <div className="relative w-full perspective-container will-change-transform lg:mx-0 mt-16 max-lg:mt-28">
-            <div className="absolute -top-12 lg:-top-24 left-0 right-0 z-30 max-lg:-top-24">
+            <div className="absolute lg:-top-[5.5rem] left-0 right-0 z-30 max-lg:-top-24">
               <div className="floating-title">
                 <div className="space-y-2 text-center transform-gpu">
                   <div className="inline-flex items-center space-x-3 transform-gpu">
@@ -125,7 +126,7 @@ export default function Hero() {
             >
               <div className="grid-3d-container">
                 <div className="featured-section">
-                  <div className="main-video-container hover-tilt">
+                  <div className="main-video-container video-inner">
                     <video
                       src="/static/video1.mp4"
                       autoPlay
@@ -176,7 +177,7 @@ export default function Hero() {
                       ].map((game, index) => (
                         <div
                           key={game.id}
-                          className="side-video-container hover-tilt animate-slide-in flex-shrink-0 w-[280px] lg:w-auto"
+                          className="side-video-container animate-slide-in flex-shrink-0 w-[280px] lg:w-auto"
                           style={
                             {
                               "--depth": `${game.depth}px`,

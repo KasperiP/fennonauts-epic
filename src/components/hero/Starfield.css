@@ -1,0 +1,14 @@
+.star-field {
+  @apply absolute inset-0 overflow-hidden;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.star {
+  @apply absolute rounded-full;
+  background: theme(colors.space.stars);
+  box-shadow: 0 0 2px theme(colors.space.stars),
+    0 0 4px theme(colors.primary.DEFAULT/40),
+    0 0 6px theme(colors.accent.DEFAULT/20);
+  animation: twinkle 3s infinite;
+}

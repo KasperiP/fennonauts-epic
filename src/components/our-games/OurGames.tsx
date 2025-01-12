@@ -140,7 +140,7 @@ export default function OurGames() {
       id="games"
     >
       <div className="absolute inset-0 bg-space-darker">
-        <div className="nebula-effect opacity-30" />
+        <div className="cosmic-nebula-effect opacity-30" />
         <div className="mission-control-grid" />
       </div>
 

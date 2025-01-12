@@ -287,20 +287,6 @@
     }
   }
 
-  .cosmic-badge {
-    @apply flex items-center gap-3 px-6 py-3 rounded-full
-           bg-space-dark/30 border border-primary/20 backdrop-blur-xl;
-
-    svg {
-      @apply text-primary text-lg;
-      filter: drop-shadow(0 0 8px theme(colors.primary.DEFAULT/50));
-    }
-
-    span {
-      @apply text-white/80 text-sm tracking-wider font-medium;
-    }
-  }
-
   .section-portal {
     @apply absolute top-0 left-0 right-0 h-64 -translate-y-1/2 pointer-events-none;
     background: radial-gradient(

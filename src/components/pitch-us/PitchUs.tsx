@@ -57,8 +57,8 @@ export default function PitchUs() {
       <div className="container-custom relative z-10">
         <div className="text-center space-y-6 mb-20">
           <div className="flex justify-center">
-            <div className="cosmic-badge mx-auto inline-flex">
-              <FaSatellite className="animate-cosmic-pulse" />
+            <div className="cosmic-badge mx-auto w-fit backdrop-blur-2xl">
+              <FaSatellite className="mr-2" />
               <span>MISSION PROPOSAL</span>
             </div>
           </div>

@@ -1,5 +1,6 @@
 "use client";
 import { useMemo, useRef } from "react";
+import "./Starfield.css";
 
 export const Starfield = () => {
   const starFieldRef = useRef(
